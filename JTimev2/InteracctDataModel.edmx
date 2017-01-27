@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InteracctDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="GetActivities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobNumber" Type="int" Mode="In" />
+          <Parameter Name="Package" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetJobNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPackages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobNumber" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="InteracctDataModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InteracctDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InteracctDataDbContext" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="GetJobNumbers" ReturnType="Collection(InteracctDataModel.GetJobNumbersResult)" />
+          <FunctionImport Name="GetActivities" ReturnType="Collection(InteracctDataModel.GetActivitiesResult)">
+            <Parameter Name="JobNumber" Mode="In" Type="Int32" />
+            <Parameter Name="Package" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPackages" ReturnType="Collection(InteracctDataModel.GetPackagesResult)">
+            <Parameter Name="JobNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetJobNumbersResult">
+          <Property Type="Int32" Name="Job_No__JOB_" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPackagesResult">
+          <Property Type="String" Name="Package__SJC_" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetActivitiesResult">
+          <Property Type="String" Name="Activity__CGR_" Nullable="true" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InteracctDataModelStoreContainer" CdmEntityContainer="InteracctDataDbContext" >
+          <FunctionImportMapping FunctionImportName="GetJobNumbers" FunctionName="InteracctDataModel.Store.GetJobNumbers" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetJobNumbersResult">
+                <ScalarProperty Name="Job_No__JOB_" ColumnName="Job No (JOB)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetActivities" FunctionName="InteracctDataModel.Store.GetActivities" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetActivitiesResult">
+                <ScalarProperty Name="Activity__CGR_" ColumnName="Activity (CGR)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPackages" FunctionName="InteracctDataModel.Store.GetPackages" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetPackagesResult">
+                <ScalarProperty Name="Package__SJC_" ColumnName="Package (SJC)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

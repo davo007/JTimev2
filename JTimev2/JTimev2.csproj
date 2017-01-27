@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -209,8 +211,32 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TimesheetController.cs" />
+    <Compile Include="GetActivitiesResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetJobNumbersResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetPackagesResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InteracctDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InteracctDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InteracctDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InteracctDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InteracctDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\201701261204532_IntitialDbCreate.cs" />
     <Compile Include="Migrations\ApplicationDbContext\201701261204532_IntitialDbCreate.Designer.cs">
@@ -228,6 +254,18 @@
     <Compile Include="Migrations\ApplicationDbContext\201701261222006_AddedTotaltoTimesheetModel1.Designer.cs">
       <DependentUpon>201701261222006_AddedTotaltoTimesheetModel1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701262112157_addedBillableToTimesheetModel.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701262112157_addedBillableToTimesheetModel.Designer.cs">
+      <DependentUpon>201701262112157_addedBillableToTimesheetModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701270121577_ReaddTimesheetDataModel.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701270121577_ReaddTimesheetDataModel.Designer.cs">
+      <DependentUpon>201701270121577_ReaddTimesheetDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701270128051_ReaddTimesheetDataModel1.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701270128051_ReaddTimesheetDataModel1.Designer.cs">
+      <DependentUpon>201701270128051_ReaddTimesheetDataModel1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -243,10 +281,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="InteracctDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InteracctDataModel.edmx</DependentUpon>
+      <LastGenOutput>InteracctDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="InteracctDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InteracctDataModel.edmx</DependentUpon>
+      <LastGenOutput>InteracctDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="InteracctDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>InteracctDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="InteracctDataModel.edmx.diagram">
+      <DependentUpon>InteracctDataModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -320,6 +375,18 @@
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201701261222006_AddedTotaltoTimesheetModel1.resx">
       <DependentUpon>201701261222006_AddedTotaltoTimesheetModel1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701262112157_addedBillableToTimesheetModel.resx">
+      <DependentUpon>201701262112157_addedBillableToTimesheetModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701270121577_ReaddTimesheetDataModel.resx">
+      <DependentUpon>201701270121577_ReaddTimesheetDataModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701270128051_ReaddTimesheetDataModel1.resx">
+      <DependentUpon>201701270128051_ReaddTimesheetDataModel1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -23,5 +23,6 @@ namespace JTimev2.Models
         public int SaturadayTime { get; set; }
         public int SundayTime { get; set; }
         public int Total { get; set; }
+        public int Billable { get; set; }
     }
 }
