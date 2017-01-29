@@ -208,9 +208,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\InteracctDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TimesheetController.cs" />
+    <Compile Include="Controllers\WeekendingController.cs" />
+    <Compile Include="DTO\InteracctActivitiesDto.cs" />
+    <Compile Include="DTO\InteracctJobNumberDto.cs" />
+    <Compile Include="DTO\InteracctPackagesDto.cs" />
     <Compile Include="GetActivitiesResult.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
@@ -266,13 +271,43 @@
     <Compile Include="Migrations\ApplicationDbContext\201701270128051_ReaddTimesheetDataModel1.Designer.cs">
       <DependentUpon>201701270128051_ReaddTimesheetDataModel1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701280256592_AddNullableTypesTimesheetsModel.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701280256592_AddNullableTypesTimesheetsModel.Designer.cs">
+      <DependentUpon>201701280256592_AddNullableTypesTimesheetsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701280322576_addedPostedApprovedTimesheetsModel.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701280322576_addedPostedApprovedTimesheetsModel.Designer.cs">
+      <DependentUpon>201701280322576_addedPostedApprovedTimesheetsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701280506431_AddedWeekendingModel.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701280506431_AddedWeekendingModel.Designer.cs">
+      <DependentUpon>201701280506431_AddedWeekendingModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701280508104_AddWeekendings.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701280508104_AddWeekendings.Designer.cs">
+      <DependentUpon>201701280508104_AddWeekendings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701280557434_AddmoreDates4.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701280557434_AddmoreDates4.Designer.cs">
+      <DependentUpon>201701280557434_AddmoreDates4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701290446458_addedweekendingtoTimesheetModel.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701290446458_addedweekendingtoTimesheetModel.Designer.cs">
+      <DependentUpon>201701290446458_addedweekendingtoTimesheetModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701290531409_addDatesWeekending.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701290531409_addDatesWeekending.Designer.cs">
+      <DependentUpon>201701290531409_addDatesWeekending.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\TimesheetModels.cs" />
+    <Compile Include="Models\Timesheet.cs" />
+    <Compile Include="Models\Weekending.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TimesheetFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -315,7 +350,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -349,10 +386,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Weekending\Index.cshtml" />
+    <Content Include="Views\Timesheet\Index.cshtml" />
+    <Content Include="Views\Timesheet\Create.cshtml" />
+    <None Include="Web.DebugHome.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Timesheet\" />
+    <Folder Include="Views\InteracctData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -384,6 +427,27 @@
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201701270128051_ReaddTimesheetDataModel1.resx">
       <DependentUpon>201701270128051_ReaddTimesheetDataModel1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280256592_AddNullableTypesTimesheetsModel.resx">
+      <DependentUpon>201701280256592_AddNullableTypesTimesheetsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280322576_addedPostedApprovedTimesheetsModel.resx">
+      <DependentUpon>201701280322576_addedPostedApprovedTimesheetsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280506431_AddedWeekendingModel.resx">
+      <DependentUpon>201701280506431_AddedWeekendingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280508104_AddWeekendings.resx">
+      <DependentUpon>201701280508104_AddWeekendings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280557434_AddmoreDates4.resx">
+      <DependentUpon>201701280557434_AddmoreDates4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701290446458_addedweekendingtoTimesheetModel.resx">
+      <DependentUpon>201701290446458_addedweekendingtoTimesheetModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701290531409_addDatesWeekending.resx">
+      <DependentUpon>201701290531409_addDatesWeekending.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -391,6 +455,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugHome|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -1,0 +1,136 @@
+﻿@model IEnumerable<JTimev2.Models.Timesheet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.WeekendingDateId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.WeekendingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Package)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NCR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Variation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MondayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TuesdayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WednesdayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThursdayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FridayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaturadayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SundayTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Billable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approved)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.WeekendingDateId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.WeekendingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Package)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NCR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Variation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MondayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TuesdayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WednesdayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThursdayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FridayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaturadayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SundayTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Billable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Approved)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

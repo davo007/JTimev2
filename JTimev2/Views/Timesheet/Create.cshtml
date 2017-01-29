@@ -1,0 +1,99 @@
+﻿@model JTimev2.ViewModels.TimesheetFormViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>TimesheetFormViewModel</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(m => m.timesheet.WeekendingDate.Id)
+            @Html.DropDownListFor(m => m.timesheet.WeekendingDate.Id, new SelectList(Model.Weekending, "Id", "DateOfSun"), "Select Week Ending", new { @class = "form-control"})
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.JobNumber)
+            @Html.TextBoxFor(m => m.timesheet.JobNumber, new { @class = "form-control"})
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.Package)
+            @Html.TextBoxFor(m => m.timesheet.Package, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.Activity)
+            @Html.TextBoxFor(m => m.timesheet.Activity, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.NCR)
+            @Html.TextBoxFor(m => m.timesheet.NCR, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.Variation)
+            @Html.TextBoxFor(m => m.timesheet.Variation, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.MondayTime)
+            @Html.TextBoxFor(m => m.timesheet.MondayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.TuesdayTime)
+            @Html.TextBoxFor(m => m.timesheet.TuesdayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.WednesdayTime)
+            @Html.TextBoxFor(m => m.timesheet.WednesdayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.ThursdayTime)
+            @Html.TextBoxFor(m => m.timesheet.ThursdayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.FridayTime)
+            @Html.TextBoxFor(m => m.timesheet.FridayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.SaturadayTime)
+            @Html.TextBoxFor(m => m.timesheet.SaturadayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.SundayTime)
+            @Html.TextBoxFor(m => m.timesheet.SundayTime, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.Total)
+            @Html.TextBoxFor(m => m.timesheet.Total, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.Billable)
+            @Html.TextBoxFor(m => m.timesheet.Billable, new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.timesheet.Description)
+            @Html.TextAreaFor(m => m.timesheet.Description, new { @class = "form-control" })
+        </div>
+        
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

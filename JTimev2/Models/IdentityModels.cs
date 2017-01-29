@@ -20,7 +20,8 @@ namespace JTimev2.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<TimesheetModels> Timesheets { get; set; }
+        public DbSet<Timesheet> Timesheets { get; set; }
+        public DbSet<Weekending> Weekendings { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -31,5 +32,7 @@ namespace JTimev2.Models
         {
             return new ApplicationDbContext();
         }
+
+        
     }
 }

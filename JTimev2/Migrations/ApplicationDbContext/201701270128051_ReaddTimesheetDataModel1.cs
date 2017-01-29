@@ -8,7 +8,7 @@ namespace JTimev2.Migrations.ApplicationDbContext
         public override void Up()
         {
             CreateTable(
-                "dbo.TimesheetModels",
+                "dbo.Timesheet",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -35,7 +35,7 @@ namespace JTimev2.Migrations.ApplicationDbContext
         
         public override void Down()
         {
-            DropTable("dbo.TimesheetModels");
+            DropTable("dbo.Timesheet");
         }
     }
 }
