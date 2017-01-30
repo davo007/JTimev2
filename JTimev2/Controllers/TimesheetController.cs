@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 using JTimev2.Models;
 using JTimev2.ViewModels;
@@ -20,9 +21,11 @@ namespace JTimev2.Controllers
 
         // GET: Timesheet
        
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var model = _context.Timesheets.ToList();
+            var model = _context.Timesheets
+                .Include(c => c.Weekending);
+            
             return View(model);
         }
 
@@ -32,7 +35,7 @@ namespace JTimev2.Controllers
             var weekendings = _context.Weekendings.ToList();
             var viewModel = new TimesheetFormViewModel
             {                
-                Weekending = weekendings
+                Weekendings = weekendings
             };
             return View(viewModel);
         }

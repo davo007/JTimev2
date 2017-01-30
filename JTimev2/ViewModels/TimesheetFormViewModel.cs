@@ -8,7 +8,8 @@ namespace JTimev2.ViewModels
 {
     public class TimesheetFormViewModel
     {
-        public IEnumerable<Weekending> Weekending { get; set; }
+        public IEnumerable<Weekending> Weekendings { get; set; }
+        public byte? WeekendingId { get; set; }
         public int? Id { get; set; }
         public int EmployeeId { get; set; }
                 

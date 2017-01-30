@@ -295,6 +295,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201701290531409_addDatesWeekending.Designer.cs">
       <DependentUpon>201701290531409_addDatesWeekending.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201701301000490_AddWeekendingId.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201701301000490_AddWeekendingId.Designer.cs">
+      <DependentUpon>201701301000490_AddWeekendingId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -440,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201701290531409_addDatesWeekending.resx">
       <DependentUpon>201701290531409_addDatesWeekending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701301000490_AddWeekendingId.resx">
+      <DependentUpon>201701301000490_AddWeekendingId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -16,8 +16,8 @@
         <h4>TimesheetFormViewModel</h4>
         <hr />
         <div class="form-group">
-            @Html.LabelFor(m => m.Id)
-            @Html.DropDownListFor(m => m.Id, new SelectList(Model.Weekending, "Id", "DateOfSun"), "Select Week Ending", new { @class = "form-control"})
+            @Html.LabelFor(m => m.WeekendingId)
+            @Html.DropDownListFor(m => m.WeekendingId, new SelectList(Model.Weekendings, "Id", "DateOfSun"), "Select Week Ending", new { @class = "form-control"})
         </div>
         <div>
             @Html.LabelFor(m => m.JobNumber)

@@ -10,8 +10,8 @@ namespace JTimev2.Models
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         
-        public Weekending WeekendingDate { get; set; }
-        
+        public Weekending Weekending { get; set; }
+        public byte WeekendingId { get; set; }
         public int JobNumber { get; set; }
         public string Package { get; set; }
         public string Activity { get; set; }

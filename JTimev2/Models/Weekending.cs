@@ -9,7 +9,6 @@ namespace JTimev2.Models
     public class Weekending
     {
         [Display(Name = "Week Ending")]
-        
         public int Id { get; set; }
 
         [DataType(DataType.Date)]
