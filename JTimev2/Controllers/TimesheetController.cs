@@ -31,8 +31,7 @@ namespace JTimev2.Controllers
         {
             var weekendings = _context.Weekendings.ToList();
             var viewModel = new TimesheetFormViewModel
-            {
-                timesheet = new Timesheet(),
+            {                
                 Weekending = weekendings
             };
             return View(viewModel);

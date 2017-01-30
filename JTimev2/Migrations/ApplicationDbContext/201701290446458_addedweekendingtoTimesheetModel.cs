@@ -7,7 +7,7 @@ namespace JTimev2.Migrations.ApplicationDbContext
     {
         public override void Up()
         {
-            RenameTable(name: "dbo.TimesheetModels", newName: "Timesheets");
+            RenameTable(name: "dbo.Timesheet", newName: "Timesheets");
             CreateTable(
                 "dbo.Weekendings",
                 c => new
@@ -24,7 +24,7 @@ namespace JTimev2.Migrations.ApplicationDbContext
             AddForeignKey("dbo.Timesheets", "WeekendingDate_Id", "dbo.Weekendings", "Id");
             DropColumn("dbo.Timesheets", "WeekendingDateId");
             DropColumn("dbo.Timesheets", "WeekendingDate");
-            DropTable("dbo.WeekendingModels");
+            //DropTable("dbo.WeekendingModels");
         }
         
         public override void Down()
@@ -48,7 +48,7 @@ namespace JTimev2.Migrations.ApplicationDbContext
             DropColumn("dbo.Timesheets", "Posted");
             DropColumn("dbo.Timesheets", "Description");
             DropTable("dbo.Weekendings");
-            RenameTable(name: "dbo.Timesheets", newName: "TimesheetModels");
+            RenameTable(name: "dbo.Timesheets", newName: "Timesheet");
         }
     }
 }

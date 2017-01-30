@@ -35,7 +35,7 @@ namespace JTimev2.Migrations.ApplicationDbContext
         
         public override void Down()
         {
-            DropTable("dbo.Timesheet");
+            DropTable("dbo.TimesheetModels");
         }
     }
 }

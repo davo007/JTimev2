@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JTimev2.Models.WeekendingModels>
+﻿@model IEnumerable<JTimev2.Models.Weekending>
 
 @{
     ViewBag.Title = "Index";
@@ -13,28 +13,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.WeekendingDate)
+            @Html.DisplayNameFor(model => model.DateOfSun)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Posted)
-        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.WeekendingDate)
+            @Html.DisplayFor(modelItem => item.DateOfSun)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Posted)
-        </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

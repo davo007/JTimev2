@@ -287,10 +287,6 @@
     <Compile Include="Migrations\ApplicationDbContext\201701280508104_AddWeekendings.Designer.cs">
       <DependentUpon>201701280508104_AddWeekendings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbContext\201701280557434_AddmoreDates4.cs" />
-    <Compile Include="Migrations\ApplicationDbContext\201701280557434_AddmoreDates4.Designer.cs">
-      <DependentUpon>201701280557434_AddmoreDates4.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\201701290446458_addedweekendingtoTimesheetModel.cs" />
     <Compile Include="Migrations\ApplicationDbContext\201701290446458_addedweekendingtoTimesheetModel.Designer.cs">
       <DependentUpon>201701290446458_addedweekendingtoTimesheetModel.cs</DependentUpon>
@@ -438,9 +434,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280508104_AddWeekendings.resx">
       <DependentUpon>201701280508104_AddWeekendings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbContext\201701280557434_AddmoreDates4.resx">
-      <DependentUpon>201701280557434_AddmoreDates4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201701290446458_addedweekendingtoTimesheetModel.resx">
       <DependentUpon>201701290446458_addedweekendingtoTimesheetModel.cs</DependentUpon>
