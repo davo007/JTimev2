@@ -30,5 +30,33 @@ namespace JTimev2.ViewModels
         public string Description { get; set; }
         public bool Approved { get; set; }
         public bool Posted { get; set; }
+
+        public TimesheetFormViewModel()
+        {
+            Id = 0;
+        }
+
+        public TimesheetFormViewModel(Timesheet timesheet)
+        {
+            Id = timesheet.Id;
+            JobNumber = timesheet.JobNumber;
+            Package = timesheet.Package;
+            Activity = timesheet.Activity;
+            NCR = timesheet.NCR;
+            WeekendingId = timesheet.WeekendingId;
+            Variation = timesheet.Variation;
+            MondayTime = timesheet.MondayTime;
+            TuesdayTime = timesheet.TuesdayTime;
+            WednesdayTime = timesheet.WednesdayTime;
+            ThursdayTime = timesheet.ThursdayTime;
+            FridayTime = timesheet.FridayTime;
+            SaturadayTime = timesheet.FridayTime;
+            SundayTime = timesheet.SundayTime;
+            Total = (int)(timesheet.MondayTime + timesheet.TuesdayTime + timesheet.WednesdayTime + timesheet.ThursdayTime + timesheet.FridayTime + timesheet.SaturadayTime + timesheet.SundayTime);
+            Billable = timesheet.Billable;
+            Description = timesheet.Description;
+            Approved = timesheet.Approved;
+            Posted = timesheet.Posted;
+        }
     }
 }
