@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table id="timesheet"class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.EmployeeId)
@@ -134,3 +134,14 @@
 }
 
 </table>
+
+@section Scripts
+{
+    
+    <script>
+        $(document).ready(function () {
+            //$("#timesheet").DataTable();
+        });
+    </script>
+    
+    }
