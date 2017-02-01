@@ -48,9 +48,9 @@ namespace JTimev2.Controllers
                 return View(tsm);
             } else
             {
-                tsm.EmployeeId = 1;
+                //tsm.EmployeeId = 1;
                 //tsm.WeekendingDateId = 1;
-                //tsm.WeekendingDate = DateTime.Now;
+                tsm.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == tsm.WeekendingId);
                     
                 _context.Timesheets.Add(tsm);
 
