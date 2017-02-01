@@ -9,12 +9,12 @@ using JTimev2.ViewModels;
 
 namespace JTimev2.Controllers
 {
-    public class TimesheetController : Controller
+    public class TimesheetsController : Controller
     {
 
         private ApplicationDbContext _context;
 
-        public TimesheetController()
+        public TimesheetsController()
         {
             _context = new ApplicationDbContext();
         }
@@ -23,8 +23,7 @@ namespace JTimev2.Controllers
        
         public ViewResult Index()
         {
-            var model = _context.Timesheets
-                .Include(c => c.Weekending);
+            var model = _context.Timesheets.Include(c => c.Weekending).ToList();             
             
             return View(model);
         }

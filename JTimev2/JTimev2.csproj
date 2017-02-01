@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -204,18 +208,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\InteracctDataController.cs" />
+    <Compile Include="Controllers\API\TimesheetsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\TimesheetController.cs" />
+    <Compile Include="Controllers\TimesheetsController.cs" />
     <Compile Include="Controllers\WeekendingController.cs" />
     <Compile Include="DTO\InteracctActivitiesDto.cs" />
     <Compile Include="DTO\InteracctJobNumberDto.cs" />
     <Compile Include="DTO\InteracctPackagesDto.cs" />
+    <Compile Include="DTO\TimesheetDto.cs" />
+    <Compile Include="DTO\WeekendingDto.cs" />
     <Compile Include="GetActivitiesResult.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
@@ -298,6 +306,18 @@
     <Compile Include="Migrations\ApplicationDbContext\201701301000490_AddWeekendingId.cs" />
     <Compile Include="Migrations\ApplicationDbContext\201701301000490_AddWeekendingId.Designer.cs">
       <DependentUpon>201701301000490_AddWeekendingId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702010926347_FixedSaturdaySpelling.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702010926347_FixedSaturdaySpelling.Designer.cs">
+      <DependentUpon>201702010926347_FixedSaturdaySpelling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702010933027_FixWeekendingId.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702010933027_FixWeekendingId.Designer.cs">
+      <DependentUpon>201702010933027_FixWeekendingId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702010934431_FixWeekendingId2.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702010934431_FixWeekendingId2.Designer.cs">
+      <DependentUpon>201702010934431_FixWeekendingId2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -609,8 +629,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Weekending\Index.cshtml" />
-    <Content Include="Views\Timesheet\Index.cshtml" />
-    <Content Include="Views\Timesheet\Create.cshtml" />
+    <Content Include="Views\Timesheets\Index.cshtml" />
+    <Content Include="Views\Timesheets\Create.cshtml" />
     <None Include="Web.DebugHome.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -669,6 +689,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201701301000490_AddWeekendingId.resx">
       <DependentUpon>201701301000490_AddWeekendingId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702010926347_FixedSaturdaySpelling.resx">
+      <DependentUpon>201702010926347_FixedSaturdaySpelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702010933027_FixWeekendingId.resx">
+      <DependentUpon>201702010933027_FixWeekendingId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702010934431_FixWeekendingId2.resx">
+      <DependentUpon>201702010934431_FixWeekendingId2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

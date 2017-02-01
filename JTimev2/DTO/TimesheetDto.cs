@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace JTimev2.Models
+namespace JTimev2.DTO
 {
-    public class Timesheet
+    public class TimesheetDto
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
-        
-        public Weekending Weekending { get; set; }
+
+        public WeekendingDto Weekending { get; set; }
         public byte WeekendingId { get; set; }
         public int JobNumber { get; set; }
         public string Package { get; set; }

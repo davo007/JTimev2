@@ -52,7 +52,7 @@ namespace JTimev2.ViewModels
             FridayTime = timesheet.FridayTime;
             SaturadayTime = timesheet.FridayTime;
             SundayTime = timesheet.SundayTime;
-            Total = (int)(timesheet.MondayTime + timesheet.TuesdayTime + timesheet.WednesdayTime + timesheet.ThursdayTime + timesheet.FridayTime + timesheet.SaturadayTime + timesheet.SundayTime);
+            Total = (int)(timesheet.MondayTime + timesheet.TuesdayTime + timesheet.WednesdayTime + timesheet.ThursdayTime + timesheet.FridayTime + timesheet.SaturdayTime + timesheet.SundayTime);
             Billable = timesheet.Billable;
             Description = timesheet.Description;
             Approved = timesheet.Approved;
