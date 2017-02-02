@@ -25,7 +25,7 @@ namespace JTimev2.Controllers
         {
             var model = _context.Timesheets.Include(c => c.Weekending).ToList();             
             
-            return View(model);
+            return View("TimesheetList", model);
         }
 
 

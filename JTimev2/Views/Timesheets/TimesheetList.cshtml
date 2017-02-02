@@ -35,7 +35,62 @@
 {
     <script>
         $(document).ready(function () {
-            $("#movies").DataTable();
+            $("#timesheet").DataTable({
+                ajax: {
+                    url: "/api/timesheets",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "jobNumber"
+                    },
+                    {
+                        data: "package"
+                    },
+                    {
+                        data: "activity"
+                    },
+                    {
+                        data: "ncr"
+                    },
+                    {
+                        data: "variation"
+                    },
+                    {
+                        data: "mondayTime"
+                    },
+                    {
+                        data: "tuesdayTime"
+                    },
+                    {
+                        data: "wednesdayTime"
+                    },
+                    {
+                        data: "thursdayTime"
+                    },
+                    {
+                        data: "fridayTime"
+                    },
+                    {
+                        data: "saturdayTime"
+                    },
+                    {
+                        data: "sundayTime"
+                    },
+                    {
+                        data: "total"
+                    },
+                    {
+                        data: "billable"
+                    },
+                    {
+                        data: "description"
+                    }
+                    
+
+                ]
+
+            });
         });
     </script>
     
