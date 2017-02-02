@@ -1,0 +1,42 @@
+﻿@model IEnumerable<JTimev2.Models.Timesheet>
+@{
+    ViewBag.Title = "TimesheetList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TimesheetList</h2>
+<table id="timesheet" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Job Number</th>
+            <th>Package</th>
+            <th>Activity</th>
+            <th>NCR</th>
+            <th>Variation</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+            <th>Total</th>
+            <th>Billable</th>
+            <th>Description</th>
+        </tr>
+       
+    </thead>
+    <tbody>
+
+    </tbody>
+</table> 
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#movies").DataTable();
+        });
+    </script>
+    
+    }

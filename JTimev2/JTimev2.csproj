@@ -631,6 +631,7 @@
     <Content Include="Views\Weekending\Index.cshtml" />
     <Content Include="Views\Timesheets\Index.cshtml" />
     <Content Include="Views\Timesheets\Create.cshtml" />
+    <Content Include="Views\Timesheets\TimesheetList.cshtml" />
     <None Include="Web.DebugHome.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
