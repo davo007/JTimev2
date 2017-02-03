@@ -13,7 +13,10 @@ namespace JTimev2
                         "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/scripts/datatables/jquery.datatables.js",
-                      "~/scripts/datatables/datatables.bootstrap.js"));
+                      "~/scripts/datatables/datatables.bootstrap.js",
+                      "~/scripts/datatables/datatables.buttons.js",
+                      "~/scripts/datatables/datatables.select.js",
+                      "~/scripts/datatableseditor/datatables.editor.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -27,6 +30,10 @@ namespace JTimev2
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/content/datatables/css/jquery.datatables.css",
+                      "~/content/datatables/css/buttons.datatables.css",
+                      "~/content/datatables/css/select.datatables.css",
+                      "~/content/datatableseditor/editor.datatables.css",
                       "~/Content/site.css"));
         }
     }
