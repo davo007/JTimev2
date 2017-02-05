@@ -31,7 +31,38 @@ namespace JTimev2.Controllers.API
                 .ToList()
                 .Select(Mapper.Map<Timesheet, TimesheetDto>);
 
-            return Ok(timesheetQuery);
+            return Ok(timesheetDtos);
+        }
+        [HttpPost]
+        public IHttpActionResult NewTimesheet(Timesheet timesheet)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            _context.Timesheets.Add(timesheet);
+            _context.SaveChanges();
+
+            //return Ok(timesheet);
+            //return Created(new Uri(Request.RequestUri + "/" + timesheet.Id), timesheet);
+            return Json(timesheet);
+        }
+
+        [HttpPut]
+        public IHttpActionResult UpdateTimesheet(int id, TimesheetDto timesheetDto)
+        {
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var timesheetInDb = _context.Timesheets.SingleOrDefault(c => c.Id == id);
+
+            if (timesheetInDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            Mapper.Map(timesheetDto, timesheetInDb);
+
+            _context.SaveChanges();
+
+            return Json(timesheetInDb);
         }
     }
 }
