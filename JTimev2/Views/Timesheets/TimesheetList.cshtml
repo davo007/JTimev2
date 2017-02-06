@@ -72,11 +72,15 @@
                         dataType: 'json',
                         data: function (d) {
                             //console.log(d.ToString());
-                            var obj = JSON.parse(JSON.stringify(d));
-                            var obj2 = JSON.stringify(d.data);
-                            var obj3 = JSON.parse(obj2);
-                            console.log(JSON.stringify(obj3));
-                            return JSON.stringify(obj3);
+                            //console.log("_id_");
+                            //var obj = JSON.parse(JSON.stringify(d));
+                            //var obj2 = JSON.stringify(d.data);
+                            var obj3 = JSON.parse(JSON.stringify(d.data));
+                            var id = Object.keys(obj3);
+                            
+                            //console.log(obj3[iduse]);
+                            //console.log(JSON.stringify(obj3));
+                            return JSON.stringify(obj3[id[0]]);
                         }
                     },
 
