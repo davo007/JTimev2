@@ -8,6 +8,9 @@ using System.Data.Entity;
 using JTimev2.Models;
 using AutoMapper;
 using JTimev2.DTO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace JTimev2.Controllers.API
 {
@@ -50,6 +53,7 @@ namespace JTimev2.Controllers.API
         [HttpPut]
         public IHttpActionResult UpdateTimesheet(int id, TimesheetDto timesheetDto)
         {
+
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
@@ -62,7 +66,34 @@ namespace JTimev2.Controllers.API
 
             _context.SaveChanges();
 
+            string output = JsonConvert.SerializeObject(timesheetInDb);
+
+            var json = "{data : [ " + output + "]}";
+
+            //var array = JArray.Parse(initalJson);
+
+            //array.Add(timesheetInDb);
+
+
+
+            //object item = new object { data = timesheetInDb };
+            //JsonConvert.DeserializeObject(output);
+
+            //return Ok(JsonConvert.DeserializeObject(json));
+            //return Ok(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(json), Formatting.Indented));
             return Json(timesheetInDb);
+        }
+
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            var timesheetInDb = _context.Timesheets.SingleOrDefault(c => c.Id == id);
+
+            if (timesheetInDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            _context.Timesheets.Remove(timesheetInDb);
+            _context.SaveChanges();
         }
     }
 }
