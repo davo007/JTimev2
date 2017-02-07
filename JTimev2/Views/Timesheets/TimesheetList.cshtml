@@ -24,7 +24,7 @@
             <th>Total</th>
             <th>Billable</th>
             <th>Description</th>
-            <th>Options</th>
+           
         </tr>
        
     </thead>
@@ -71,15 +71,10 @@
                         url: "/api/timesheets/_id_",
                         dataType: 'json',
                         data: function (d) {
-                            //console.log(d.ToString());
-                            //console.log("_id_");
-                            //var obj = JSON.parse(JSON.stringify(d));
-                            //var obj2 = JSON.stringify(d.data);
+                            
                             var obj3 = JSON.parse(JSON.stringify(d.data));
                             var id = Object.keys(obj3);
-                            
-                            //console.log(obj3[iduse]);
-                            //console.log(JSON.stringify(obj3));
+                                                        
                             return JSON.stringify(obj3[id[0]]);
                         }
                     },
@@ -144,7 +139,10 @@
             });
 
             $('#timesheet').on('click', 'tbody td',function (e) {
-                editor.inline(this);
+                editor.inline(this, {
+                    submit: 'allIfChanged'
+
+                });
             });
 
             var oTable = $("#timesheet").DataTable({
@@ -189,54 +187,25 @@
                 },
                 columns: [
                     
-                    {
-                        data: "jobNumber"
-                    },
-                    {
-                        data: "package"
-                    },
-                    {
-                        data: "activity"
-                    },
-                    {
-                        data: "ncr"
-                    },
-                    {
-                        data: "variation"
-                    },
-                    {
-                        data: "mondayTime"
-                    },
-                    {
-                        data: "tuesdayTime"
-                    },
-                    {
-                        data: "wednesdayTime"
-                    },
-                    {
-                        data: "thursdayTime"
-                    },
-                    {
-                        data: "fridayTime"
-                    },
-                    {
-                        data: "saturdayTime"
-                    },
-                    {
-                        data: "sundayTime"
-                    },
-                    {
-                        data: "total",
+                    {data: "jobNumber"},
+                    {data: "package"},
+                    {data: "activity"},
+                    {data: "ncr"},
+                    {data: "variation"},
+                    {data: "mondayTime"},
+                    {data: "tuesdayTime"},
+                    {data: "wednesdayTime"},
+                    {data: "thursdayTime"},
+                    {data: "fridayTime"},
+                    {data: "saturdayTime"},
+                    {data: "sundayTime"},
+                    {data: "total",
                         render: function (data, type, row) {
                             return data.mondayTime + data.tuesdayTime + data.wednesdayTime + data.thursdayTime + data.fridayTime + data.saturdayTime + data.sundayTime;
                         }
                     },
-                    {
-                        data: "billable"
-                    },
-                    {
-                        data: "description"
-                    }
+                    {data: "billable"},
+                    {data: "description"}
                     
 
                 ],
@@ -247,7 +216,7 @@
                 buttons: [
                     { extend: "create", editor: editor },
                     { extend: "edit", editor: editor },
-                    {extend: "remove", editor:editor}
+                    { extend: "remove", editor:editor}
                 ]
 
             });

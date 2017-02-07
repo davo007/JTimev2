@@ -24,6 +24,8 @@ namespace JTimev2.Controllers.API
             _context = new ApplicationDbContext();
         }
 
+        
+
         //GET /api/timesheets
         public IHttpActionResult GetTimesheets()
         {
@@ -39,20 +41,36 @@ namespace JTimev2.Controllers.API
         [HttpPost]
         public IHttpActionResult NewTimesheet(Timesheet timesheet)
         {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+
             if (!ModelState.IsValid)
                 return BadRequest();
 
             _context.Timesheets.Add(timesheet);
             _context.SaveChanges();
 
+            string output = JsonConvert.SerializeObject(timesheet);
+
+            var json = "{data : [ " + output + "]}";
+
             //return Ok(timesheet);
             //return Created(new Uri(Request.RequestUri + "/" + timesheet.Id), timesheet);
-            return Json(timesheet);
+            return Ok(JsonConvert.DeserializeObject(json));
+            //return Json(timesheet);
         }
 
         [HttpPut]
         public IHttpActionResult UpdateTimesheet(int id, TimesheetDto timesheetDto)
         {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
 
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -69,19 +87,9 @@ namespace JTimev2.Controllers.API
             string output = JsonConvert.SerializeObject(timesheetInDb);
 
             var json = "{data : [ " + output + "]}";
-
-            //var array = JArray.Parse(initalJson);
-
-            //array.Add(timesheetInDb);
-
-
-
-            //object item = new object { data = timesheetInDb };
-            //JsonConvert.DeserializeObject(output);
-
-            //return Ok(JsonConvert.DeserializeObject(json));
-            //return Ok(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(json), Formatting.Indented));
-            return Json(timesheetInDb);
+                        
+            return Ok(JsonConvert.DeserializeObject(json));
+            
         }
 
         [HttpDelete]

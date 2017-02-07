@@ -23,7 +23,7 @@ namespace JTimev2.ViewModels
         public int? WednesdayTime { get; set; }
         public int? ThursdayTime { get; set; }
         public int? FridayTime { get; set; }
-        public int? SaturadayTime { get; set; }
+        public int? SaturdayTime { get; set; }
         public int? SundayTime { get; set; }
         public int Total { get; set; }
         public int Billable { get; set; }
@@ -50,9 +50,9 @@ namespace JTimev2.ViewModels
             WednesdayTime = timesheet.WednesdayTime;
             ThursdayTime = timesheet.ThursdayTime;
             FridayTime = timesheet.FridayTime;
-            SaturadayTime = timesheet.FridayTime;
+            SaturdayTime = timesheet.SaturdayTime;
             SundayTime = timesheet.SundayTime;
-            Total = (int)(timesheet.MondayTime + timesheet.TuesdayTime + timesheet.WednesdayTime + timesheet.ThursdayTime + timesheet.FridayTime + timesheet.SaturdayTime + timesheet.SundayTime);
+            Total = timesheet.Total;
             Billable = timesheet.Billable;
             Description = timesheet.Description;
             Approved = timesheet.Approved;
