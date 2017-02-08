@@ -5,6 +5,10 @@
 }
 
 <h2>TimesheetList</h2>
+<select id="weekending">
+    <option value="0">Select Weekending</option>
+</select>
+
 <table id="timesheet" class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -50,6 +54,23 @@
         var oTable;
 
         $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/weekendings",
+                dataType: 'json',
+                success: function (json) {
+                    var $el = $("#weekending");
+                    $el.empty();
+                    $el.append($("<option></option>")
+                        .attr("value", '').text('Select Weekending'));
+                    $.each(json, function (value, key) {
+                        //console.log(key.id);
+                        $el.append($("<option></option>")
+                            .attr("value", key.id).text(key.dateOfSun));
+                    });
+                }
+            });
+
             editor = new $.fn.dataTable.Editor({
                 ajax: {
                     create: {
@@ -57,7 +78,9 @@
                         contentType: 'application/json',
                         url: "/api/timesheets/new",
                         data: function (d) {
-                            //console.log(d.ToString());
+                            
+                            //console.log(x);
+                            d.data[0].weekendingId = $("#weekending").val();
                             var obj = JSON.parse(JSON.stringify(d));
                             //console.log(obj.data[0]);
                             return JSON.stringify(obj.data[0]);
@@ -72,9 +95,11 @@
                         dataType: 'json',
                         data: function (d) {
                             
+                            //d.data[0].weekendingId = $("#weekending").val();
                             var obj3 = JSON.parse(JSON.stringify(d.data));
                             var id = Object.keys(obj3);
-                                                        
+                            obj3[id[0]].weekendingId = $("#weekending").val();
+                            console.log(obj3);
                             return JSON.stringify(obj3[id[0]]);
                         }
                     },

@@ -50,6 +50,8 @@ namespace JTimev2.Controllers.API
             if (!ModelState.IsValid)
                 return BadRequest();
 
+            timesheet.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == timesheet.WeekendingId);
+
             _context.Timesheets.Add(timesheet);
             _context.SaveChanges();
 
@@ -79,6 +81,8 @@ namespace JTimev2.Controllers.API
 
             if (timesheetInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            timesheetInDb.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == timesheetDto.WeekendingId);
 
             Mapper.Map(timesheetDto, timesheetInDb);
 
