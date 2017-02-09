@@ -214,6 +214,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\InteracctDataController.cs" />
+    <Compile Include="Controllers\API\TimesheetsByDateController.cs" />
     <Compile Include="Controllers\API\TimesheetsController.cs" />
     <Compile Include="Controllers\API\WeekendingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
 
+
 namespace JTimev2.Controllers.API
 {
     public class TimesheetsController : ApiController
@@ -27,10 +28,15 @@ namespace JTimev2.Controllers.API
         
 
         //GET /api/timesheets
+        //[HttpPost]
         public IHttpActionResult GetTimesheets()
+        //public IEnumerable<TimesheetDto> GetTimesheets()
         {
             var timesheetQuery = _context.Timesheets
                 .Include(c => c.Weekending);
+
+            //if (query > 0)
+            //    timesheetQuery = timesheetQuery.Where(m => m.WeekendingId == query);
 
             var timesheetDtos = timesheetQuery
                 .ToList()
@@ -38,6 +44,7 @@ namespace JTimev2.Controllers.API
 
             return Ok(timesheetDtos);
         }
+
         [HttpPost]
         public IHttpActionResult NewTimesheet(Timesheet timesheet)
         {
@@ -77,14 +84,18 @@ namespace JTimev2.Controllers.API
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            
+
             var timesheetInDb = _context.Timesheets.SingleOrDefault(c => c.Id == id);
 
             if (timesheetInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            timesheetInDb.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == timesheetDto.WeekendingId);
+            
 
             Mapper.Map(timesheetDto, timesheetInDb);
+
+            timesheetInDb.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == timesheetDto.WeekendingId);
 
             _context.SaveChanges();
 

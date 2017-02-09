@@ -54,6 +54,8 @@
         var oTable;
 
         $(document).ready(function () {
+           
+
             $.ajax({
                 type: "GET",
                 url: "/api/weekendings",
@@ -205,9 +207,13 @@
                         );
                 },
                 bPaginate: false,
-                dom: "Bfrtip",
+                dom: "Brtip",
                 ajax: {
-                    url: "/api/timesheets",
+                    url: "/api/timesheetsbydate/" + $("#weekending").val(),
+                    //data: function(d){
+                    //    d.id = $("#weekending").val();
+                    //},
+                    type: 'POST',
                     dataSrc: ""
                 },
                 columns: [
@@ -244,6 +250,12 @@
                     { extend: "remove", editor:editor}
                 ]
 
+            });
+
+            $("#weekending").on('change', function () {
+                console.log($("#weekending").val());
+                //oTable.ajax.reload();
+                oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
             });
            
             
