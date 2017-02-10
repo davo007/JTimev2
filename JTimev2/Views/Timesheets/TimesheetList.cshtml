@@ -190,7 +190,7 @@
 
             });
 
-            $('#timesheet').on('click', 'tbody td',function (e) {
+            $('#timesheet').on('click', 'tbody td.editable',function (e) {
                 editor.inline(this, {
                     submit: 'allIfChanged'
 
@@ -216,8 +216,15 @@
                             tmp[i] = json[i].name;
                         }
                         newjson["options"]["package"] = tmp;
-                        newjson["values"]["package"] = tmp[0];
-                        //console.log(newjson);
+
+                        
+
+                        if (data.row != null) {
+                            newjson["values"]["package"] = data["row"]["package"];
+                        } else {
+                            newjson["values"]["package"] = tmp[0];
+                        }
+                        //console.log(data);
                         callback(newjson);
                     }
                 });
@@ -242,9 +249,17 @@
                         for (var i = 0; i < l ; i++) {
                             tmp[i] = json[i].name;
                         }
+
                         newjson["options"]["activity"] = tmp;
-                        newjson["values"]["activity"] = tmp[0];
+
+                        if (data.row != null) {
+
+                            newjson["values"]["activity"] = data["row"]["activity"];
+                        } else {
+                            newjson["values"]["activity"] = tmp[0];
+                        }
                         //console.log(newjson);
+                        //console.log("Package Data " + data)
                         callback(newjson);
                     }
                 });
@@ -300,22 +315,55 @@
                     {data: "jobNumber"},
                     {data: "package"},
                     {data: "activity"},
-                    {data: "ncr"},
-                    {data: "variation"},
-                    {data: "mondayTime"},
-                    {data: "tuesdayTime"},
-                    {data: "wednesdayTime"},
-                    {data: "thursdayTime"},
-                    {data: "fridayTime"},
-                    {data: "saturdayTime"},
-                    {data: "sundayTime"},
+                    {
+                        data: "ncr",
+                        className: 'editable'
+                    },
+                    {
+                        data: "variation",
+                        className: 'editable'
+                    },
+                    {
+                        data: "mondayTime",
+                        className: 'editable'
+                    },
+                    {
+                        data: "tuesdayTime",
+                        className: 'editable'
+                    },
+                    {
+                        data: "wednesdayTime",
+                        className: 'editable'
+                    },
+                    {
+                        data: "thursdayTime",
+                        className: 'editable'
+                    },
+                    {
+                        data: "fridayTime",
+                        className: 'editable'
+                    },
+                    {
+                        data: "saturdayTime",
+                        className: 'editable'
+                    },
+                    {
+                        data: "sundayTime",
+                        className: 'editable'
+                    },
                     {data: "total",
                         render: function (data, type, row) {
                             return data.mondayTime + data.tuesdayTime + data.wednesdayTime + data.thursdayTime + data.fridayTime + data.saturdayTime + data.sundayTime;
                         }
                     },
-                    {data: "billable"},
-                    {data: "description"}
+                    {
+                        data: "billable",
+                        className: 'editable'
+                    },
+                    {
+                        data: "description",
+                        className: 'editable'
+                    }
                     
 
                 ],
@@ -332,11 +380,20 @@
             });
 
             $("#weekending").on('change', function () {
-                console.log($("#weekending").val());
+                //console.log($("#weekending").val());
                 //oTable.ajax.reload();
                 oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
             });
            
+            //editor.on('initEdit', function (e, node, data) {
+            //    editor.val('package', data.package);
+            //    editor.val('activity', data.activity);
+            //    //console.log(e);
+            //    var pckage = editor.field('package').val();
+            //    var activity = editor.field('activity').val();
+            //    //pckage.val(oTable.cell('.selected').data());
+            //    console.log(data.activity + " " + data.package);
+            //});
             
         });
     </script>
