@@ -54,7 +54,26 @@
         var oTable;
 
         $(document).ready(function () {
-           
+            function GetJobNumbers() {
+                $.ajax({
+                    url: '/api/InteracctData/GetJobNumbers',
+                    dataType: 'json',
+                    success: function (response, statusText) {
+                        //console.log(response);
+                        var dropdownlist = new Array();
+                        var l = response.length;
+                        for (var i = 0; i < l ; i++) {
+                            dropdownlist[i] = {
+                                "label": response[i].id,
+                                "value": response[i].jobNumber
+                            };
+                        }
+                        //console.log(dropdownlist);
+                        editor.field('jobNumber').update(dropdownlist);
+                    }
+                });
+
+            }
 
             $.ajax({
                 type: "GET",
@@ -101,7 +120,7 @@
                             var obj3 = JSON.parse(JSON.stringify(d.data));
                             var id = Object.keys(obj3);
                             obj3[id[0]].weekendingId = $("#weekending").val();
-                            console.log(obj3);
+                            //console.log(obj3);
                             return JSON.stringify(obj3[id[0]]);
                         }
                     },
@@ -117,13 +136,19 @@
                 idSrc: 'id',
                 fields: [ {
                     label: "Job Number:",
-                    name: "jobNumber"
+                    name: "jobNumber",
+                    type: "select",
+                    options: GetJobNumbers()
                 }, {
                     label: "Package:",
-                    name: "package"
+                    name: "package",
+                    type: "select",
+                    options: []
                 }, {
                     label: "Activity:",
-                    name: "activity"
+                    name: "activity",
+                    type: "select",
+                    options: []
                 }, {
                     label: "NCR:",
                     name: "ncr"
@@ -170,6 +195,60 @@
                     submit: 'allIfChanged'
 
                 });
+            });
+
+            editor.dependent('jobNumber', function (val, data, callback) {
+                $.ajax({
+                    url: '/api/interacctData/GetPackages?JobNumber=' + val,
+                    dataType: 'json',
+                    success: function (json) {
+                        var tmp = Array();
+                        var newjson = {
+                            "options": {
+                                "package": []
+                            },
+                            "values": {
+                                "package": []
+                            }
+                        };
+                        var l = json.length;
+                        for (var i = 0; i < l ; i++) {
+                            tmp[i] = json[i].name;
+                        }
+                        newjson["options"]["package"] = tmp;
+                        newjson["values"]["package"] = tmp[0];
+                        //console.log(newjson);
+                        callback(newjson);
+                    }
+                });
+                //console.log(val);
+            });
+
+            editor.dependent('package', function (val, data, callback) {
+                $.ajax({
+                    url: '/api/interacctData/GetActivities?JobNumber=' + editor.val('jobNumber') + "&Package=" + val,
+                    dataType: 'json',
+                    success: function (json) {
+                        var tmp = Array();
+                        var newjson = {
+                            "options": {
+                                "activity": []
+                            },
+                            "values": {
+                                "activity": []
+                            }
+                        };
+                        var l = json.length;
+                        for (var i = 0; i < l ; i++) {
+                            tmp[i] = json[i].name;
+                        }
+                        newjson["options"]["activity"] = tmp;
+                        newjson["values"]["activity"] = tmp[0];
+                        //console.log(newjson);
+                        callback(newjson);
+                    }
+                });
+                //console.log(val);
             });
 
             var oTable = $("#timesheet").DataTable({
