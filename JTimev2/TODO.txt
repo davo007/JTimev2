@@ -1,0 +1,12 @@
+﻿- styling for dropdown List boxes
+- Add Work Task to model
+- Get Variations by activities (if possible)
+- validation
+- Get NCR list
+- Add up total hrs for row
+- check for date selected when click new entry
+- general tidy up, links, application name
+
+Future enhancements:
+- invoiced amount
+- Billable value
