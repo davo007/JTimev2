@@ -5,9 +5,11 @@
 }
 
 <h2>TimesheetList</h2>
+<label for="weekending">Weekending Date:</label>
 <select id="weekending">
     <option value="0">Select Weekending</option>
 </select>
+
 
 <table id="timesheet" class="table table-striped table-bordered table-hover">
     <thead>
@@ -54,6 +56,9 @@
         var oTable;
 
         $(document).ready(function () {
+
+            //$('.selectpicker').selectpicker('render');
+
             function GetJobNumbers() {
                 $.ajax({
                     url: '/api/InteracctData/GetJobNumbers',
@@ -382,7 +387,14 @@
                 buttons: [
                     { extend: "create", editor: editor },
                     { extend: "edit", editor: editor },
-                    { extend: "remove", editor:editor}
+                    { extend: "remove", editor: editor },
+                    //'copyHtml5',
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'A4'
+                    },
+                    'print'
                 ]
 
             });

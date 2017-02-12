@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\dhealy\Source\Repos\JTimev2\JTimev2\InteracctDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\My Documents\Visual Studio 2015\Projects\JTimev2\JTimev2\JTimev2\InteracctDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -25,14 +25,14 @@
             <Parameter Name="Package" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetPackages" ReturnType="Collection(InteracctDataModel.GetPackagesResult)">
-            <Parameter Name="JobNumber" Mode="In" Type="Int32" />
+          <Parameter Name="JobNumber" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetJobNumbersResult">
           <Property Type="Int32" Name="Job_No__JOB_" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetPackagesResult">
-          <Property Type="String" Name="Package__SJC_" Nullable="true" MaxLength="10" />
+        <Property Type="String" Name="Code__SJC_" Nullable="true" MaxLength="10" />
         </ComplexType>
         <ComplexType Name="GetActivitiesResult">
           <Property Type="String" Name="Activity__CGR_" Nullable="true" MaxLength="10" />
@@ -60,7 +60,7 @@
           <FunctionImportMapping FunctionImportName="GetPackages" FunctionName="InteracctDataModel.Store.GetPackages" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="InteracctDataModel.GetPackagesResult">
-                <ScalarProperty Name="Package__SJC_" ColumnName="Package (SJC)" />
+              <ScalarProperty Name="Code__SJC_" ColumnName="Code (SJC)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

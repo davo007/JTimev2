@@ -39,8 +39,8 @@ namespace JTimev2.Controllers.API
 
             IEnumerable<InteracctPackagesDto> PackageList = Packages.Select(x => new InteracctPackagesDto
             {
-                Id = x.Package__SJC_,
-                Name = x.Package__SJC_
+                Id = x.Code__SJC_,
+                Name = x.Code__SJC_
             }).ToList();
 
             return Ok(PackageList);

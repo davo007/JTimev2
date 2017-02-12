@@ -12,11 +12,15 @@ namespace JTimev2
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/scripts/bootbox.js",
-                      "~/Scripts/respond.js",
+                        "~/Scripts/respond.js",
+                        "~/scripts/pdfmake/pdfmake.min.js",
+                      "~/scripts/pdfmake/vfs_fonts.js",
                       "~/scripts/datatables/jquery.datatables.js",
                       "~/scripts/datatables/datatables.bootstrap.js",
                       "~/scripts/datatables/datatables.buttons.js",
                       "~/scripts/datatables/datatables.select.js",
+                      "~/scripts/datatables/buttons.html5.min.js",
+                      "~/scripts/datatables/buttons.print.js",
                       "~/scripts/datatableseditor/datatables.editor.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

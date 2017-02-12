@@ -13,6 +13,6 @@ namespace JTimev2
     
     public partial class GetPackagesResult
     {
-        public string Package__SJC_ { get; set; }
+        public string Code__SJC_ { get; set; }
     }
 }

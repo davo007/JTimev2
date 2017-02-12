@@ -1,10 +1,15 @@
-﻿- styling for dropdown List boxes
-- Add Work Task to model
+﻿- Add Work Task to model
 - Get Variations by activities (if possible)
 - validation
 - Get NCR list
 - general tidy up, links, application name
+- Write to PDF/Excel
+	- customise PDF output
 
 Future enhancements:
 - invoiced amount
 - Billable value
+- styling for dropdown List boxes
+- user/employee login
+- admin section
+	- edit users
