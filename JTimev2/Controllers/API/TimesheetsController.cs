@@ -59,6 +59,41 @@ namespace JTimev2.Controllers.API
 
             timesheet.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == timesheet.WeekendingId);
 
+            if (timesheet.MondayTime == null)
+            {
+                timesheet.MondayTime = 0;
+            }
+
+            if (timesheet.TuesdayTime == null)
+            {
+                timesheet.TuesdayTime = 0;
+            }
+
+            if (timesheet.WednesdayTime == null)
+            {
+                timesheet.WednesdayTime = 0;
+            }
+
+            if (timesheet.ThursdayTime == null)
+            {
+                timesheet.ThursdayTime = 0;
+            }
+
+            if (timesheet.FridayTime == null)
+            {
+                timesheet.FridayTime = 0;
+            }
+
+            if (timesheet.SaturdayTime == null)
+            {
+                timesheet.SaturdayTime = 0;
+            }
+
+            if (timesheet.SundayTime == null)
+            {
+                timesheet.SundayTime = 0;
+            }
+
             _context.Timesheets.Add(timesheet);
             _context.SaveChanges();
 
@@ -84,7 +119,40 @@ namespace JTimev2.Controllers.API
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            
+            if (timesheetDto.MondayTime == null)
+            {
+                timesheetDto.MondayTime = 0;
+            }
+
+            if (timesheetDto.TuesdayTime == null)
+            {
+                timesheetDto.TuesdayTime = 0;
+            }
+
+            if (timesheetDto.WednesdayTime == null)
+            {
+                timesheetDto.WednesdayTime = 0;
+            }
+
+            if (timesheetDto.ThursdayTime == null)
+            {
+                timesheetDto.ThursdayTime = 0;
+            }
+
+            if (timesheetDto.FridayTime == null)
+            {
+                timesheetDto.FridayTime = 0;
+            }
+
+            if (timesheetDto.SaturdayTime == null)
+            {
+                timesheetDto.SaturdayTime = 0;
+            }
+
+            if (timesheetDto.SundayTime == null)
+            {
+                timesheetDto.SundayTime = 0;
+            }
 
             var timesheetInDb = _context.Timesheets.SingleOrDefault(c => c.Id == id);
 

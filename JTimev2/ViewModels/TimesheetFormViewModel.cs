@@ -18,15 +18,15 @@ namespace JTimev2.ViewModels
         public string Activity { get; set; }
         public int? NCR { get; set; }
         public int? Variation { get; set; }
-        public int? MondayTime { get; set; }
-        public int? TuesdayTime { get; set; }
-        public int? WednesdayTime { get; set; }
-        public int? ThursdayTime { get; set; }
-        public int? FridayTime { get; set; }
-        public int? SaturdayTime { get; set; }
-        public int? SundayTime { get; set; }
-        public int Total { get; set; }
-        public int Billable { get; set; }
+        public double? MondayTime { get; set; }
+        public double? TuesdayTime { get; set; }
+        public double? WednesdayTime { get; set; }
+        public double? ThursdayTime { get; set; }
+        public double? FridayTime { get; set; }
+        public double? SaturdayTime { get; set; }
+        public double? SundayTime { get; set; }
+        public double Total { get; set; }
+        public double Billable { get; set; }
         public string Description { get; set; }
         public bool Approved { get; set; }
         public bool Posted { get; set; }

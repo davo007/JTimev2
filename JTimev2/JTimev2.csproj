@@ -321,6 +321,18 @@
     <Compile Include="Migrations\ApplicationDbContext\201702010934431_FixWeekendingId2.Designer.cs">
       <DependentUpon>201702010934431_FixWeekendingId2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702112334089_UpdateDayHoursToDoubles.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702112334089_UpdateDayHoursToDoubles.Designer.cs">
+      <DependentUpon>201702112334089_UpdateDayHoursToDoubles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702112340488_Minortimesheetchange.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702112340488_Minortimesheetchange.Designer.cs">
+      <DependentUpon>201702112340488_Minortimesheetchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702112343505_Addtotal.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702112343505_Addtotal.Designer.cs">
+      <DependentUpon>201702112343505_Addtotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -738,6 +750,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201702010934431_FixWeekendingId2.resx">
       <DependentUpon>201702010934431_FixWeekendingId2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702112334089_UpdateDayHoursToDoubles.resx">
+      <DependentUpon>201702112334089_UpdateDayHoursToDoubles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702112340488_Minortimesheetchange.resx">
+      <DependentUpon>201702112340488_Minortimesheetchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702112343505_Addtotal.resx">
+      <DependentUpon>201702112343505_Addtotal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
