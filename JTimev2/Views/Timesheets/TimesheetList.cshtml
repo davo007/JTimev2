@@ -178,7 +178,8 @@
                     name: "sundayTime"
                 }, {
                     label: "Total:",
-                    name: "total"
+                    name: "total",
+                    type: "readonly"
                 }, {
                     label: "Billable:",
                     name: "billable"
@@ -360,8 +361,7 @@
                         
                     },
                     {
-                        data: "total"
-                        
+                        data: "total"                      
                         
                     },
                     {
@@ -403,6 +403,15 @@
             //    console.log(data.activity + " " + data.package);
             //});
             
+            editor.on('preOpen', function (e, mode, action) {
+                //console.log($("#weekending").val());
+                if($("#weekending").val() == 0)
+                {
+                    bootbox.alert("Please select a Weekending Date");
+                    //alert("Please select a date");
+                    return false;
+                }
+            });
         });
     </script>
     

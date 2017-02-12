@@ -3,7 +3,6 @@
 - Get Variations by activities (if possible)
 - validation
 - Get NCR list
-- check for date selected when click new entry (preopen?)
 - general tidy up, links, application name
 
 Future enhancements:
