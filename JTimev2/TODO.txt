@@ -1,8 +1,17 @@
 ﻿- Add Work Task to model
-- Get Variations by activities (if possible)
+	- create api call
+- Get Variations by activities
+	- create api call
 - validation
 - Get NCR list
+	- create api call
 - general tidy up, links, application name
+- add job name to form
+	- create api call
+- add package name to form
+	- create api call
+- add activity name to form
+	- create api call
 - Write to PDF/Excel
 	- customise PDF output
 
