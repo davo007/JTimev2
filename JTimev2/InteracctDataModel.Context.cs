@@ -54,5 +54,22 @@ namespace JTimev2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPackagesResult>("GetPackages", jobNumberParameter);
         }
+    
+        public virtual ObjectResult<GetVariationNumbersResult> GetVariationNumbers(Nullable<int> jobnumber, string package, string activity)
+        {
+            var jobnumberParameter = jobnumber.HasValue ?
+                new ObjectParameter("jobnumber", jobnumber) :
+                new ObjectParameter("jobnumber", typeof(int));
+    
+            var packageParameter = package != null ?
+                new ObjectParameter("package", package) :
+                new ObjectParameter("package", typeof(string));
+    
+            var activityParameter = activity != null ?
+                new ObjectParameter("activity", activity) :
+                new ObjectParameter("activity", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetVariationNumbersResult>("GetVariationNumbers", jobnumberParameter, packageParameter, activityParameter);
+        }
     }
 }

@@ -224,6 +224,7 @@
     <Compile Include="DTO\InteracctActivitiesDto.cs" />
     <Compile Include="DTO\InteracctJobNumberDto.cs" />
     <Compile Include="DTO\InteracctPackagesDto.cs" />
+    <Compile Include="DTO\InteracctVariationsDto.cs" />
     <Compile Include="DTO\TimesheetDto.cs" />
     <Compile Include="DTO\WeekendingDto.cs" />
     <Compile Include="GetActivitiesResult.cs">
@@ -233,6 +234,9 @@
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetPackagesResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetVariationNumbersResult.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

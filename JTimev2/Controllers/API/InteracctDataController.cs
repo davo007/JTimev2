@@ -59,5 +59,21 @@ namespace JTimev2.Controllers.API
             return Ok(ActivitiesList);
         }
 
+        public IHttpActionResult GetVariations(int JobNumber, string Package, string Activity)
+        {
+            var Variations = _context.GetVariationNumbers(JobNumber, Package, Activity);
+
+            IEnumerable<InteracctVariationsDto> VarationsList = Variations.Select(x => new InteracctVariationsDto
+            {
+                Id = (int)x.Variation_No__VRN_,
+                VariationNumber = (int)x.Variation_No__VRN_
+            }).ToList();
+
+            return Ok(VarationsList);
+
+        }
+
+
+
     }
 }

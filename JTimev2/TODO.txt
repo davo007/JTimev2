@@ -1,7 +1,5 @@
 ﻿- Add Work Task to model
 	- create api call
-- Get Variations by activities
-	- create api call
 - validation
 - Get NCR list
 	- create api call

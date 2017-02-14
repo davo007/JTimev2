@@ -18,8 +18,8 @@
             <th>Job Number</th>
             <th>Package</th>
             <th>Activity</th>
-            <th>NCR</th>
             <th>Variation</th>
+            <th>NCR</th>
             <th>Monday</th>
             <th>Tuesday</th>
             <th>Wednesday</th>
@@ -165,12 +165,15 @@
                 //}, {
                 //    label: "Activity Des:",
                 //    name: "actdesc",
+                
+                }, {
+                    label: "Variation:",
+                    name: "variation",
+                    type: "select",
+                    options: []
                 }, {
                     label: "NCR:",
                     name: "ncr"
-                }, {
-                    label: "Variation:",
-                    name: "variation"
                 }, {
                     label: "Monday Time:",
                     name: "mondayTime"
@@ -262,6 +265,8 @@
                                 "activity": []
                             }
                         };
+                        //console.log(json);
+
                         var l = json.length;
                         for (var i = 0; i < l ; i++) {
                             tmp[i] = json[i].name;
@@ -274,6 +279,46 @@
                             newjson["values"]["activity"] = data["row"]["activity"];
                         } else {
                             newjson["values"]["activity"] = tmp[0];
+                        }
+                        //console.log(newjson);
+                        //console.log("Package Data " + data)
+                        callback(newjson);
+                    }
+                });
+                //console.log(val);
+            });
+
+            editor.dependent('activity', function (val, data, callback) {
+                $.ajax({
+                    url: '/api/interacctData/GetVariations?JobNumber=' + editor.val('jobNumber') + "&Package=" + editor.val('package') + "&Activity=" + val,
+                    dataType: 'json',
+                    success: function (json) {
+                        var tmp = Array();
+                        var newjson = {
+                            "options": {
+                                "variation": []
+                            },
+                            "values": {
+                                "variation": []
+                            }
+                        };
+
+                        //console.log(json);
+
+                        var l = json.length;
+                        for (var i = 0; i < l ; i++) {
+                            tmp[i] = json[i].variationNumber;
+                        }
+
+                        tmp[l] = 0;
+
+                        newjson["options"]["variation"] = tmp;
+
+                        if (data.row != null) {
+
+                            newjson["values"]["variation"] = data["row"]["variation"];
+                        } else {
+                            newjson["values"]["variation"] = tmp[0];
                         }
                         //console.log(newjson);
                         //console.log("Package Data " + data)
@@ -332,14 +377,15 @@
                     {data: "jobNumber"},
                     {data: "package"},
                     {data: "activity"},
-                    {
-                        data: "ncr",
-                        className: 'editable'
-                    },
+                    
                     {
                         data: "variation",
                         className: 'editable'
                         
+                    },
+                    {
+                        data: "ncr",
+                        className: 'editable'
                     },
                     {
                         data: "mondayTime",

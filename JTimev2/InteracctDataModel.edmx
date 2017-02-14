@@ -13,6 +13,11 @@
         <Function Name="GetPackages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JobNumber" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetVariationNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="jobnumber" Type="int" Mode="In" />
+          <Parameter Name="package" Type="nvarchar" Mode="In" />
+          <Parameter Name="activity" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="InteracctDataModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -27,6 +32,11 @@
           <FunctionImport Name="GetPackages" ReturnType="Collection(InteracctDataModel.GetPackagesResult)">
           <Parameter Name="JobNumber" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetVariationNumbers" ReturnType="Collection(InteracctDataModel.GetVariationNumbersResult)">
+            <Parameter Name="jobnumber" Mode="In" Type="Int32" />
+            <Parameter Name="package" Mode="In" Type="String" />
+            <Parameter Name="activity" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetJobNumbersResult">
           <Property Type="Int32" Name="Job_No__JOB_" Nullable="true" />
@@ -36,6 +46,9 @@
         </ComplexType>
         <ComplexType Name="GetActivitiesResult">
           <Property Type="String" Name="Activity__CGR_" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetVariationNumbersResult">
+          <Property Type="Int32" Name="Variation_No__VRN_" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -61,6 +74,13 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="InteracctDataModel.GetPackagesResult">
               <ScalarProperty Name="Code__SJC_" ColumnName="Code (SJC)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVariationNumbers" FunctionName="InteracctDataModel.Store.GetVariationNumbers" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetVariationNumbersResult">
+                <ScalarProperty Name="Variation_No__VRN_" ColumnName="Variation No (VRN)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
