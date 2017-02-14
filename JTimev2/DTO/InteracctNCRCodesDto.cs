@@ -5,10 +5,10 @@ using System.Web;
 
 namespace JTimev2.DTO
 {
-    public class InteracctActivitiesDto
+    public class InteracctNCRCodesDto
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Desc { get; set; }
+        public string NCRCode { get; set; }
+        public string NCRCodeDesc { get; set; }
     }
 }

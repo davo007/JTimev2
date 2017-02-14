@@ -21,7 +21,7 @@ namespace JTimev2.Models
         public int JobNumber { get; set; }
         public string Package { get; set; }
         public string Activity { get; set; }
-        public int? NCR { get; set; }
+        public string NCR { get; set; }
         public int? Variation { get; set; }
 
         [Display(Name ="Monday")]

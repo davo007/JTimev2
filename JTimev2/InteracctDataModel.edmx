@@ -10,6 +10,7 @@
           <Parameter Name="Package" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetJobNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNCRCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetPackages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JobNumber" Type="int" Mode="In" />
         </Function>
@@ -18,6 +19,7 @@
           <Parameter Name="package" Type="nvarchar" Mode="In" />
           <Parameter Name="activity" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetWorkTasks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="InteracctDataModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -37,18 +39,39 @@
             <Parameter Name="package" Mode="In" Type="String" />
             <Parameter Name="activity" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetNCRCodes" ReturnType="Collection(InteracctDataModel.GetNCRCodesResult)" />
+          <FunctionImport Name="GetWorkTasks" ReturnType="Collection(InteracctDataModel.GetWorkTasksResult)" />
         </EntityContainer>
         <ComplexType Name="GetJobNumbersResult">
           <Property Type="Int32" Name="Job_No__JOB_" Nullable="true" />
+          <Property Type="String" Name="Job_Name__JNA_" Nullable="true" MaxLength="56" />
         </ComplexType>
         <ComplexType Name="GetPackagesResult">
         <Property Type="String" Name="Code__SJC_" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Description__SJD_" Nullable="true" MaxLength="40" />
         </ComplexType>
         <ComplexType Name="GetActivitiesResult">
           <Property Type="String" Name="Activity__CGR_" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Description__CGD_" Nullable="true" MaxLength="40" />
         </ComplexType>
         <ComplexType Name="GetVariationNumbersResult">
           <Property Type="Int32" Name="Variation_No__VRN_" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetNCRCodes_Result">
+          <Property Type="String" Name="Code__NCR_" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Non_Charge_Reason__NCD_" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="GetWorkTasks_Result">
+          <Property Type="String" Name="Work_Task__CIT_" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Description__CID_" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="GetWorkTasksResult">
+          <Property Type="String" Name="Work_Task__CIT_" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Description__CID_" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="GetNCRCodesResult">
+          <Property Type="String" Name="Code__NCR_" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Non_Charge_Reason__NCD_" Nullable="true" MaxLength="40" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -60,6 +83,7 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="InteracctDataModel.GetJobNumbersResult">
                 <ScalarProperty Name="Job_No__JOB_" ColumnName="Job No (JOB)" />
+                <ScalarProperty Name="Job_Name__JNA_" ColumnName="Job Name (JNA)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -67,6 +91,7 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="InteracctDataModel.GetActivitiesResult">
                 <ScalarProperty Name="Activity__CGR_" ColumnName="Activity (CGR)" />
+                <ScalarProperty Name="Description__CGD_" ColumnName="Description (CGD)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -74,6 +99,7 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="InteracctDataModel.GetPackagesResult">
               <ScalarProperty Name="Code__SJC_" ColumnName="Code (SJC)" />
+                <ScalarProperty Name="Description__SJD_" ColumnName="Description (SJD)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -81,6 +107,22 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="InteracctDataModel.GetVariationNumbersResult">
                 <ScalarProperty Name="Variation_No__VRN_" ColumnName="Variation No (VRN)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNCRCodes" FunctionName="InteracctDataModel.Store.GetNCRCodes">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetNCRCodesResult">
+                <ScalarProperty Name="Code__NCR_" ColumnName="Code (NCR)" />
+                <ScalarProperty Name="Non_Charge_Reason__NCD_" ColumnName="Non Charge Reason (NCD)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWorkTasks" FunctionName="InteracctDataModel.Store.GetWorkTasks">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetWorkTasksResult">
+                <ScalarProperty Name="Work_Task__CIT_" ColumnName="Work Task (CIT)" />
+                <ScalarProperty Name="Description__CID_" ColumnName="Description (CID)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

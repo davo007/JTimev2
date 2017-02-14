@@ -11,9 +11,9 @@ namespace JTimev2
 {
     using System;
     
-    public partial class GetJobNumbersResult
+    public partial class GetNCRCodes_Result
     {
-        public Nullable<int> Job_No__JOB_ { get; set; }
-        public string Job_Name__JNA_ { get; set; }
+        public string Code__NCR_ { get; set; }
+        public string Non_Charge_Reason__NCD_ { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace JTimev2.DTO
     {
         public int Id { get; set; }
         public int JobNumber { get; set; }
+        public string JobDesc { get; set; }
     }
 }

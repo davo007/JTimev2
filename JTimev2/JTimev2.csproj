@@ -214,6 +214,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\InteracctDataController.cs" />
+    <Compile Include="Controllers\API\InteracctNCRCodesController.cs" />
+    <Compile Include="Controllers\API\InteracctWorkTasksController.cs" />
     <Compile Include="Controllers\API\TimesheetsByDateController.cs" />
     <Compile Include="Controllers\API\TimesheetsController.cs" />
     <Compile Include="Controllers\API\WeekendingsController.cs" />
@@ -223,8 +225,10 @@
     <Compile Include="Controllers\WeekendingController.cs" />
     <Compile Include="DTO\InteracctActivitiesDto.cs" />
     <Compile Include="DTO\InteracctJobNumberDto.cs" />
+    <Compile Include="DTO\InteracctNCRCodesDto.cs" />
     <Compile Include="DTO\InteracctPackagesDto.cs" />
     <Compile Include="DTO\InteracctVariationsDto.cs" />
+    <Compile Include="DTO\InteracctWorkTasksDto.cs" />
     <Compile Include="DTO\TimesheetDto.cs" />
     <Compile Include="DTO\WeekendingDto.cs" />
     <Compile Include="GetActivitiesResult.cs">
@@ -233,10 +237,22 @@
     <Compile Include="GetJobNumbersResult.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetNCRCodesResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetNCRCodes_Result.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetPackagesResult.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetVariationNumbersResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetWorkTasksResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetWorkTasks_Result.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -336,6 +352,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201702112343505_Addtotal.cs" />
     <Compile Include="Migrations\ApplicationDbContext\201702112343505_Addtotal.Designer.cs">
       <DependentUpon>201702112343505_Addtotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702140910237_ChangeNCRtoString.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702140910237_ChangeNCRtoString.Designer.cs">
+      <DependentUpon>201702140910237_ChangeNCRtoString.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -767,6 +787,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201702112343505_Addtotal.resx">
       <DependentUpon>201702112343505_Addtotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702140910237_ChangeNCRtoString.resx">
+      <DependentUpon>201702140910237_ChangeNCRtoString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

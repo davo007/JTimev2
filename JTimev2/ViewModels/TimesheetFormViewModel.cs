@@ -16,7 +16,7 @@ namespace JTimev2.ViewModels
         public int JobNumber { get; set; }
         public string Package { get; set; }
         public string Activity { get; set; }
-        public int? NCR { get; set; }
+        public string NCR { get; set; }
         public int? Variation { get; set; }
         public double? MondayTime { get; set; }
         public double? TuesdayTime { get; set; }

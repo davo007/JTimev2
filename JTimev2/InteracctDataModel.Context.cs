@@ -71,5 +71,15 @@ namespace JTimev2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetVariationNumbersResult>("GetVariationNumbers", jobnumberParameter, packageParameter, activityParameter);
         }
+    
+        public virtual ObjectResult<GetNCRCodesResult> GetNCRCodes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNCRCodesResult>("GetNCRCodes");
+        }
+    
+        public virtual ObjectResult<GetWorkTasksResult> GetWorkTasks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWorkTasksResult>("GetWorkTasks");
+        }
     }
 }

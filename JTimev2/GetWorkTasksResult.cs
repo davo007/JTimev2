@@ -11,9 +11,9 @@ namespace JTimev2
 {
     using System;
     
-    public partial class GetJobNumbersResult
+    public partial class GetWorkTasksResult
     {
-        public Nullable<int> Job_No__JOB_ { get; set; }
-        public string Job_Name__JNA_ { get; set; }
+        public string Work_Task__CIT_ { get; set; }
+        public string Description__CID_ { get; set; }
     }
 }

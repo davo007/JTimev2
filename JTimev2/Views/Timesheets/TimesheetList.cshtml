@@ -69,12 +69,38 @@
                         var l = response.length;
                         for (var i = 0; i < l ; i++) {
                             dropdownlist[i] = {
-                                "label": response[i].id,
-                                "value": response[i].jobNumber
+                                "label": response[i].jobNumber + " - " + response[i].jobDesc,
+                                "value": response[i].id
                             };
                         }
                         //console.log(dropdownlist);
                         editor.field('jobNumber').update(dropdownlist);
+                    }
+                });
+
+            }
+
+            function GetNCRCodes() {
+                $.ajax({
+                    url: '/api/InteracctNCRCodes/GetNCRCodes',
+                    dataType: 'json',
+                    success: function (response, statusText) {
+                        //console.log(response);
+                        var dropdownlist = new Array();
+                        var l = response.length;
+                        for (var i = 0; i < l ; i++) {
+                            dropdownlist[i] = {
+                                "label": response[i].ncrCode + " - " + response[i].ncrCodeDesc,
+                                "value": response[i].id
+                            };
+
+                            dropdownlist[l] = {
+                                "label": "0.NA - Not Applicable",
+                                "value": "0.NA"
+                            }
+                        }
+                        //console.log(dropdownlist);
+                        editor.field('ncr').update(dropdownlist);
                     }
                 });
 
@@ -144,11 +170,7 @@
                     name: "jobNumber",
                     type: "select",
                     options: GetJobNumbers()
-                //},{
-                //    label: "Job Des:",
-                //    name: "jobdesc",
-
-                },{
+               },{
                     label: "Package:",
                     name: "package",
                     type: "select",
@@ -173,7 +195,9 @@
                     options: []
                 }, {
                     label: "NCR:",
-                    name: "ncr"
+                    name: "ncr",
+                    type: "select",
+                    options: GetNCRCodes()
                 }, {
                     label: "Monday Time:",
                     name: "mondayTime"
@@ -223,7 +247,11 @@
                     dataType: 'json',
                     success: function (json) {
                         var tmp = Array();
+                        //var tmp2 = Array();
                         var newjson = {
+                            //"labels":{
+                            //    "package": []
+                            //},
                             "options": {
                                 "package": []
                             },
@@ -234,9 +262,10 @@
                         var l = json.length;
                         for (var i = 0; i < l ; i++) {
                             tmp[i] = json[i].name;
+                            //tmp2[i] = json[i].name + " - " + json[i].desc;
                         }
                         newjson["options"]["package"] = tmp;
-
+                        //newjson["labels"]["package"] = tmp2;
                         
 
                         if (data.row != null) {
@@ -244,7 +273,7 @@
                         } else {
                             newjson["values"]["package"] = tmp[0];
                         }
-                        //console.log(data);
+                        console.log(newjson);
                         callback(newjson);
                     }
                 });
@@ -257,7 +286,11 @@
                     dataType: 'json',
                     success: function (json) {
                         var tmp = Array();
+                        //var tmp2 = Array();
                         var newjson = {
+                            //"labels": {
+                            //    "activity": []
+                            //},
                             "options": {
                                 "activity": []
                             },
@@ -270,9 +303,11 @@
                         var l = json.length;
                         for (var i = 0; i < l ; i++) {
                             tmp[i] = json[i].name;
+                            //tmp2[i] = json[i].name + " - " + json[i].desc;
                         }
 
                         newjson["options"]["activity"] = tmp;
+                        //newjson["labels"]["activity"] = tmp2;
 
                         if (data.row != null) {
 

@@ -25,7 +25,8 @@ namespace JTimev2.Controllers.API
             {
 
                 Id = (int)x.Job_No__JOB_,
-                JobNumber = (int)x.Job_No__JOB_
+                JobNumber = (int)x.Job_No__JOB_,
+                JobDesc = x.Job_Name__JNA_
 
             }).ToList();
 
@@ -40,7 +41,9 @@ namespace JTimev2.Controllers.API
             IEnumerable<InteracctPackagesDto> PackageList = Packages.Select(x => new InteracctPackagesDto
             {
                 Id = x.Code__SJC_,
-                Name = x.Code__SJC_
+                Name = x.Code__SJC_,
+                Desc = x.Description__SJD_
+                
             }).ToList();
 
             return Ok(PackageList);
@@ -53,7 +56,8 @@ namespace JTimev2.Controllers.API
             IEnumerable<InteracctActivitiesDto> ActivitiesList = Activities.Select(x => new InteracctActivitiesDto
             {
                 Id = x.Activity__CGR_,
-                Name = x.Activity__CGR_
+                Name = x.Activity__CGR_,
+                Desc = x.Description__CGD_
             }).ToList();
 
             return Ok(ActivitiesList);
@@ -73,7 +77,9 @@ namespace JTimev2.Controllers.API
 
         }
 
+        
 
+       
 
     }
 }

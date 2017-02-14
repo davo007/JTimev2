@@ -1,11 +1,7 @@
 ﻿- Add Work Task to model
 	- create api call
-- validation
-- Get NCR list
-	- create api call
+- Validation
 - general tidy up, links, application name
-- add job name to form
-	- create api call
 - add package name to form
 	- create api call
 - add activity name to form

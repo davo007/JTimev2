@@ -14,5 +14,6 @@ namespace JTimev2
     public partial class GetActivitiesResult
     {
         public string Activity__CGR_ { get; set; }
+        public string Description__CGD_ { get; set; }
     }
 }

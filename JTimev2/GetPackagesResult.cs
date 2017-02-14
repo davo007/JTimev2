@@ -14,5 +14,6 @@ namespace JTimev2
     public partial class GetPackagesResult
     {
         public string Code__SJC_ { get; set; }
+        public string Description__SJD_ { get; set; }
     }
 }
