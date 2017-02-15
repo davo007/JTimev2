@@ -1,8 +1,5 @@
-﻿- Add Work Task to model
-	- create api call
-- Validation
+﻿- Validation
 - general tidy up, links, application name
-
 - Write to PDF/Excel
 	- customise PDF output
 

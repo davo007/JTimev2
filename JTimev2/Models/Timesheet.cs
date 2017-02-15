@@ -23,34 +23,34 @@ namespace JTimev2.Models
         public string Activity { get; set; }
         public string NCR { get; set; }
         public int? Variation { get; set; }
-        //public string WorkTask { get; set; }
+        public string WorkTask { get; set; }
 
-        [Display(Name ="Monday")]
+        [Display(Name ="Mon")]
         [DefaultValue(0)]
         public double? MondayTime { get; set; }
 
         
-        [Display(Name = "Tuesday")]
+        [Display(Name = "Tues")]
         [DefaultValue(0)]
         public double? TuesdayTime { get; set; }
 
-        [Display(Name = "Wednesday")]
+        [Display(Name = "Wed")]
         [DefaultValue(0)]
         public double? WednesdayTime { get; set; }
 
-        [Display(Name = "Thursday")]
+        [Display(Name = "Thur")]
         [DefaultValue(0)]
         public double? ThursdayTime { get; set; }
 
-        [Display(Name = "Friday")]
+        [Display(Name = "Fri")]
         [DefaultValue(0)]
         public double? FridayTime { get; set; }
 
-        [Display(Name = "Saturday")]
+        [Display(Name = "Sat")]
         [DefaultValue(0)]
         public double? SaturdayTime { get; set; }
 
-        [Display(Name = "Sunday")]
+        [Display(Name = "Sun")]
         [DefaultValue(0)]
         public double? SundayTime { get; set; }
         public double Total

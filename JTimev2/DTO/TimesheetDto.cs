@@ -17,6 +17,7 @@ namespace JTimev2.DTO
         public string Activity { get; set; }
         public string NCR { get; set; }
         public int? Variation { get; set; }
+        public string WorkTask { get; set; }
         public double? MondayTime { get; set; }
         public double? TuesdayTime { get; set; }
         public double? WednesdayTime { get; set; }

@@ -357,6 +357,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201702140910237_ChangeNCRtoString.Designer.cs">
       <DependentUpon>201702140910237_ChangeNCRtoString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702150707357_AddWorkTask.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702150707357_AddWorkTask.Designer.cs">
+      <DependentUpon>201702150707357_AddWorkTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -790,6 +794,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201702140910237_ChangeNCRtoString.resx">
       <DependentUpon>201702140910237_ChangeNCRtoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702150707357_AddWorkTask.resx">
+      <DependentUpon>201702150707357_AddWorkTask.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
