@@ -20,6 +20,7 @@
             <th>Activity</th>
             <th>Variation</th>
             <th>NCR</th>
+            @*<th>Work Task</th>*@
             <th>Monday</th>
             <th>Tuesday</th>
             <th>Wednesday</th>
@@ -105,6 +106,32 @@
                 });
 
             }
+
+            //function GetWorkTasks() {
+            //    $.ajax({
+            //        url: '/api/InteracctWorkTasks/GetWorkTasks',
+            //        dataType: 'json',
+            //        success: function (response, statusText) {
+            //            //console.log(response);
+            //            var dropdownlist = new Array();
+            //            var l = response.length;
+            //            for (var i = 0; i < l ; i++) {
+            //                dropdownlist[i] = {
+            //                    "label": response[i].workTask + " - " + response[i].workTaskDesc,
+            //                    "value": response[i].id
+            //                };
+
+            //                dropdownlist[l] = {
+            //                    "label": "0.NA - Not Applicable",
+            //                    "value": "0.NA"
+            //                }
+            //            }
+            //            //console.log(dropdownlist);
+            //            editor.field('worktask').update(dropdownlist);
+            //        }
+            //    });
+
+            //}
 
             $.ajax({
                 type: "GET",
@@ -199,6 +226,11 @@
                     type: "select",
                     options: GetNCRCodes()
                 }, {
+                //    label: "Work Task:",
+                //    name: "worktask",
+                //    type: "select",
+                //    options: GetWorkTasks()
+                //}, {
                     label: "Monday Time:",
                     name: "mondayTime"
                 }, {
@@ -261,7 +293,11 @@
                         };
                         var l = json.length;
                         for (var i = 0; i < l ; i++) {
-                            tmp[i] = json[i].name;
+                            //tmp[i] = json[i].name;
+                            tmp[i] = {
+                                "label": json[i].name + " - " + json[i].desc,
+                                "value": json[i].id
+                            };
                             //tmp2[i] = json[i].name + " - " + json[i].desc;
                         }
                         newjson["options"]["package"] = tmp;
@@ -273,7 +309,7 @@
                         } else {
                             newjson["values"]["package"] = tmp[0];
                         }
-                        console.log(newjson);
+                        //console.log(newjson);
                         callback(newjson);
                     }
                 });
@@ -302,7 +338,11 @@
 
                         var l = json.length;
                         for (var i = 0; i < l ; i++) {
-                            tmp[i] = json[i].name;
+                            //tmp[i] = json[i].name;
+                            tmp[i] = {
+                                "label": json[i].name + " - " + json[i].desc,
+                                "value": json[i].id
+                            };
                             //tmp2[i] = json[i].name + " - " + json[i].desc;
                         }
 
@@ -422,6 +462,10 @@
                         data: "ncr",
                         className: 'editable'
                     },
+                    //{
+                    //    data: "worktask",
+                    //    className: 'editable'
+                    //},
                     {
                         data: "mondayTime",
                         className: 'editable'

@@ -23,6 +23,7 @@ namespace JTimev2.Models
         public string Activity { get; set; }
         public string NCR { get; set; }
         public int? Variation { get; set; }
+        //public string WorkTask { get; set; }
 
         [Display(Name ="Monday")]
         [DefaultValue(0)]
