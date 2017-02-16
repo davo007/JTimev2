@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<JTimev2.Models.Timesheet>
 @{
-    ViewBag.Title = "TimesheetList";
+    ViewBag.Title = "Timesheet Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TimesheetList</h2>
+<h2>Timesheet Form</h2>
 <label for="weekending">Weekending Date:</label>
 <select id="weekending">
     <option value="0">Select Weekending</option>
@@ -479,8 +479,8 @@
                 },
                 columns: [
                     {
-                        data: "ncr",
-                        className: 'editable'
+                        data: "ncr"
+                        //className: 'editable'
                     },
                     {data: "jobNumber"},
                     {data: "package"},
@@ -593,6 +593,76 @@
                 if (editor.mode() == "create") {
                     editor.field('ncr').set("0.NA");
                 }
+            });
+
+            editor.on('preSubmit', function (e, o, action) {
+                //console.log(action);
+                if (action !== 'remove') {
+                    var total = editor.field('total');
+                    var billable = editor.field('billable');
+                    var description = editor.field('description');
+                    
+                    var monday =  parseFloat(editor.field('mondayTime').val());
+                    var tuesday = parseFloat(editor.field('tuesdayTime').val());
+                    var wednesday = parseFloat(editor.field('wednesdayTime').val());
+                    var thursday = parseFloat(editor.field('thursdayTime').val());
+                    var friday = parseFloat(editor.field('fridayTime').val());
+                    var saturday = parseFloat(editor.field('saturdayTime').val());
+                    var sunday = parseFloat(editor.field('sundayTime').val());
+
+                    if (isNaN(monday)) {
+                        monday = parseInt(0);
+                    }
+
+                    if (isNaN(tuesday)) {
+                        tuesday = parseInt(0);
+                    }
+
+                    if (isNaN(wednesday)) {
+                        wednesday = parseInt(0);
+                    }
+
+                    if (isNaN(thursday)) {
+                        thursday = parseInt(0);
+                    }
+
+                    if (isNaN(friday)) {
+                        friday = parseInt(0);
+                    }
+
+                    if (isNaN(saturday)) {
+                        saturday = parseInt(0);
+                    }
+
+                    if (isNaN(sunday)) {
+                        sunday = parseInt(0);
+                    }
+                    
+                    var totalcheck = monday + tuesday + wednesday + thursday + friday + saturday + sunday;
+                    
+                    //console.log(totalcheck);
+
+                    if ( billable.val() == ''){
+                        billable.error('Billable hours required');
+                        editor.field('total').set(totalcheck);
+                       
+                    } else if (billable.val() < totalcheck && description.val() == "") {
+                        billable.error('Billable less than total, description required');
+                        description.error('Billable less than total, description required');
+                        editor.field('total').set(totalcheck);
+                    } else if (billable.val() > totalcheck) {
+                        billable.error('Billable should be less than or equal to Total, ' + totalcheck);
+                        editor.field('total').set(totalcheck);
+                    }
+
+                    if (this.inError()) {
+                        return false;
+                    }
+
+                }
+
+                
+
             });
         });
     </script>

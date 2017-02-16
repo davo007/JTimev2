@@ -1,6 +1,4 @@
-﻿- Validation
-- general tidy up, links, application name
-- Write to PDF/Excel
+﻿- Write to PDF/Excel
 	- customise PDF output
 
 Future enhancements:

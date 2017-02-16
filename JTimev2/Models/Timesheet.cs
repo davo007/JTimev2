@@ -61,6 +61,7 @@ namespace JTimev2.Models
             }
         }
         //public double Total { get; set; }
+
         public double Billable { get; set; }
         public string Description { get; set; }
         public bool Approved { get; set; }
