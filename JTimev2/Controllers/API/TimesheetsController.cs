@@ -11,6 +11,7 @@ using JTimev2.DTO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
+using DataTables;
 
 
 namespace JTimev2.Controllers.API
@@ -53,6 +54,8 @@ namespace JTimev2.Controllers.API
                 Formatting = Formatting.Indented,
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
+
+            //var request = new Editor(_context, "timesheets");
 
             if (!ModelState.IsValid)
                 return BadRequest();
