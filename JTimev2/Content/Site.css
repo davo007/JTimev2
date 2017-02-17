@@ -43,11 +43,11 @@ textarea {
     }
 }
 
-select{
-    border-radius: 5px;
+select {
+    /*border-radius: 5px;
     color: black;
-    font-weight: bold;
-    height: 35px;
+    font-weight:600;
+    height: 35px;*/
     /*position: absolute;
   z-index: 10;
   border: 1px solid #d0d0d0;
@@ -62,4 +62,5 @@ select{
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;*/
+  
 }

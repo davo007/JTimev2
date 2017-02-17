@@ -388,6 +388,7 @@
     <Content Include="Content\DataTablesEditor\editor.foundation.min.css" />
     <Content Include="Content\DataTablesEditor\editor.jqueryui.css" />
     <Content Include="Content\DataTablesEditor\editor.jqueryui.min.css" />
+    <Content Include="Content\DataTablesEditor\editor.selectize.css" />
     <Content Include="Content\DataTablesEditor\editor.semanticui.css" />
     <Content Include="Content\DataTablesEditor\editor.semanticui.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -608,6 +609,7 @@
     <Content Include="Scripts\DataTablesEditor\editor.foundation.min.js" />
     <Content Include="Scripts\DataTablesEditor\editor.jqueryui.js" />
     <Content Include="Scripts\DataTablesEditor\editor.jqueryui.min.js" />
+    <Content Include="Scripts\DataTablesEditor\editor.selectize.js" />
     <Content Include="Scripts\DataTablesEditor\editor.semanticui.js" />
     <Content Include="Scripts\DataTablesEditor\editor.semanticui.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />

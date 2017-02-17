@@ -6,7 +6,7 @@
 
 <h2>Timesheet Form</h2>
 <label for="weekending">Weekending Date:</label>
-<select id="weekending">
+<select id="weekending" class="selectize-dropdown">
     <option value="0">Select Weekending</option>
 </select>
 
@@ -204,16 +204,19 @@
                     label: "NCR:",
                     name: "ncr",
                     type: "select",
+                    //className: "selectize-dropdown",
                     options: GetNCRCodes()
                 }, {
                     label: "Job Number:",
                     name: "jobNumber",
                     type: "select",
+                    //className: "selectize-dropdown",
                     options: GetJobNumbers()
                },{
                     label: "Package:",
                     name: "package",
                     type: "select",
+                    //className: "selectize-dropdown",
                     options: []
                 //}, {
                 //    label: "Package Des:",
@@ -223,6 +226,7 @@
                     label: "Activity:",
                     name: "activity",
                     type: "select",
+                    //className: "selectize-dropdown",
                     options: []
                 //}, {
                 //    label: "Activity Des:",
@@ -232,11 +236,13 @@
                     label: "Variation:",
                     name: "variation",
                     type: "select",
+                    //className: "selectize-dropdown",
                     options: []
                 }, {
                     label: "Work Task:",
                     name: "workTask",
                     type: "select",
+                    //className: "selectize-dropdown",
                     options: GetWorkTasks()
                 }, {
                     label: "Monday Time:",
@@ -268,7 +274,8 @@
                     name: "billable"
                 }, {
                     label: "Description:",
-                    name: "description"
+                    name: "description",
+                    type: 'textarea'
                 }
                     ]
 

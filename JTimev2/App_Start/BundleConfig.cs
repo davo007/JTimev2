@@ -15,13 +15,15 @@ namespace JTimev2
                         "~/Scripts/respond.js",
                         "~/scripts/pdfmake/pdfmake.min.js",
                       "~/scripts/pdfmake/vfs_fonts.js",
+                      "~/content/selectize/js/standalone/selectize.js",
                       "~/scripts/datatables/jquery.datatables.js",
                       "~/scripts/datatables/datatables.bootstrap.js",
                       "~/scripts/datatables/datatables.buttons.js",
                       "~/scripts/datatables/datatables.select.js",
                       "~/scripts/datatables/buttons.html5.min.js",
                       "~/scripts/datatables/buttons.print.js",
-                      "~/scripts/datatableseditor/datatables.editor.js"));
+                      "~/scripts/datatableseditor/datatables.editor.js",
+                      "~/scripts/datatableseditor/editor.selectize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -38,7 +40,9 @@ namespace JTimev2
                       "~/content/datatables/css/jquery.datatables.css",
                       "~/content/datatables/css/buttons.datatables.css",
                       "~/content/datatables/css/select.datatables.css",
+                      "~/content/selectize/template-selectize.css",
                       "~/content/datatableseditor/editor.datatables.css",
+                      "~/content/datatableseditor/editor.selectize.css",
                       "~/Content/site.css"));
         }
     }
