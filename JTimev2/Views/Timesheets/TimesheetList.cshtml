@@ -484,12 +484,28 @@
                     type: 'POST',
                     dataSrc: ""
                 },
+                //initComplete: function (settings) {
+                //    $('#timesheet thead th').each(function () {
+                //        var $td = $(this);
+                //        $td.attr('title', $td.text());
+                //    });
+
+                //    $('#timesheet thead th[title]').tooltip(
+                //    {
+                //        "container": 'body'
+                //    });
+                    
+                //},
+                autoWidth: "true",
                 columns: [
                     {
                         data: "ncr"
                         //className: 'editable'
                     },
-                    {data: "jobNumber"},
+                    {
+                        data: "jobNumber"
+                                                
+                    },
                     {data: "package"},
                     {data: "activity"},
                     
@@ -692,6 +708,9 @@
                 
 
             });
+
+            
+
         });
     </script>
     

@@ -15,5 +15,8 @@ namespace JTimev2
     {
         public string Activity__CGR_ { get; set; }
         public string Description__CGD_ { get; set; }
+        public Nullable<decimal> Total_Costs____ESP_ { get; set; }
+        public Nullable<decimal> Total_Invoices____SVL_ { get; set; }
+        public Nullable<decimal> Adj_Contract___ACC_ { get; set; }
     }
 }

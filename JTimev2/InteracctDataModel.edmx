@@ -53,6 +53,9 @@
         <ComplexType Name="GetActivitiesResult">
           <Property Type="String" Name="Activity__CGR_" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Description__CGD_" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="Total_Costs____ESP_" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Total_Invoices____SVL_" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Adj_Contract___ACC_" Nullable="true" Precision="15" Scale="2" />
         </ComplexType>
         <ComplexType Name="GetVariationNumbersResult">
           <Property Type="Int32" Name="Variation_No__VRN_" Nullable="true" />
@@ -92,6 +95,9 @@
               <ComplexTypeMapping TypeName="InteracctDataModel.GetActivitiesResult">
                 <ScalarProperty Name="Activity__CGR_" ColumnName="Activity (CGR)" />
                 <ScalarProperty Name="Description__CGD_" ColumnName="Description (CGD)" />
+                <ScalarProperty Name="Total_Costs____ESP_" ColumnName="Total Costs $ (ESP)" />
+                <ScalarProperty Name="Total_Invoices____SVL_" ColumnName="Total Invoices $ (SVL)" />
+                <ScalarProperty Name="Adj_Contract___ACC_" ColumnName="Adj Contract$ (ACC)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

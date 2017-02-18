@@ -58,7 +58,11 @@ namespace JTimev2.Controllers.API
             {
                 Id = x.Activity__CGR_,
                 Name = x.Activity__CGR_,
-                Desc = x.Description__CGD_
+                Desc = x.Description__CGD_,
+                TotalCost = x.Total_Costs____ESP_,
+                TotalInvoices = x.Total_Invoices____SVL_,
+                AdjContract = x.Adj_Contract___ACC_
+                
             }).ToList();
 
             return Ok(ActivitiesList);
