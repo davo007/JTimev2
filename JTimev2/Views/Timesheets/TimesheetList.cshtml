@@ -557,9 +557,30 @@
                     selector: 'td:first-child'
                 },
                 buttons: [
-                    { extend: "create", editor: editor },
-                    { extend: "edit", editor: editor },
-                    { extend: "remove", editor: editor },
+                    {
+                        extend: "create",
+                        editor: editor,
+                        formButtons: [
+                            'Create',
+                            { label: 'Cancel', fn: function () { this.close(); } }
+                    ]
+                    },
+                    {
+                        extend: "edit",
+                        editor: editor,
+                        formButtons: [
+                            'Edit',
+                            { label: 'Cancel', fn: function () { this.close(); } }
+                        ]
+                    },
+                    {
+                        extend: "remove",
+                        editor: editor,
+                        formButtons: [
+                            'Delete',
+                            { label: 'Cancel', fn: function () { this.close(); } }
+                        ]
+                    },
                     //'copyHtml5',
                     {
                         extend: 'pdfHtml5',
