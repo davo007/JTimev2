@@ -169,6 +169,7 @@ namespace JTimev2.Controllers.API
             timesheetInDb.Weekending = _context.Weekendings.SingleOrDefault(x => x.Id == timesheetDto.WeekendingId);
 
             _context.SaveChanges();
+          
 
             string output = JsonConvert.SerializeObject(timesheetInDb);
 

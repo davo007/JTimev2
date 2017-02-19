@@ -500,6 +500,11 @@
                         //console.log("is Infinity");
                         $('td', row).eq(15).addClass('highlightBad');
                     }
+
+                    if (parseFloat(data.billable) < parseFloat(data.total)) {
+                        $('td', row).eq(14).addClass('highlightBad');
+
+                    }
                     
                 },
                 "footerCallback": function(row, data, start, end, display){
@@ -670,6 +675,25 @@
                             { label: 'Cancel', fn: function () { this.close(); } }
                         ]
                     },
+                    {
+                        extend: "selectedSingle",
+                        text: 'Duplicate',
+                        action: function (e, dt, node, config) {
+                            var values = editor.edit(
+                                oTable.row({ selected: true }).index(),
+                                false
+                                )
+                            .val();
+
+                            editor
+                            .create({
+                                title: 'Duplicate record',
+                                buttons: "Create from Existing"
+                            })
+                            .set(values);
+
+                        }
+                    },
                     //'copyHtml5',
                     {
                         extend: 'pdfHtml5',
@@ -712,75 +736,80 @@
                 }
             });
 
-            editor.on('preSubmit', function (e, o, action) {
-                //console.log(action);
-                if (action !== 'remove') {
-                    var total = editor.field('total');
-                    var billable = editor.field('billable');
-                    var description = editor.field('description');
+            editor.on('submitSuccess', function (e, json, data) {
+                console.log(data);
+                bootbox.alert("submitted");
+            });
+
+            //editor.on('preSubmit', function (e, o, action) {
+            //    //console.log(action);
+            //    if (action !== 'remove') {
+            //        var total = editor.field('total');
+            //        var billable = editor.field('billable');
+            //        var description = editor.field('description');
                     
-                    var monday =  parseFloat(editor.field('mondayTime').val());
-                    var tuesday = parseFloat(editor.field('tuesdayTime').val());
-                    var wednesday = parseFloat(editor.field('wednesdayTime').val());
-                    var thursday = parseFloat(editor.field('thursdayTime').val());
-                    var friday = parseFloat(editor.field('fridayTime').val());
-                    var saturday = parseFloat(editor.field('saturdayTime').val());
-                    var sunday = parseFloat(editor.field('sundayTime').val());
+            //        var monday =  parseFloat(editor.field('mondayTime').val());
+            //        var tuesday = parseFloat(editor.field('tuesdayTime').val());
+            //        var wednesday = parseFloat(editor.field('wednesdayTime').val());
+            //        var thursday = parseFloat(editor.field('thursdayTime').val());
+            //        var friday = parseFloat(editor.field('fridayTime').val());
+            //        var saturday = parseFloat(editor.field('saturdayTime').val());
+            //        var sunday = parseFloat(editor.field('sundayTime').val());
 
-                    if (isNaN(monday)) {
-                        monday = parseInt(0);
-                    }
+            //        if (isNaN(monday)) {
+            //            monday = parseInt(0);
+            //        }
 
-                    if (isNaN(tuesday)) {
-                        tuesday = parseInt(0);
-                    }
+            //        if (isNaN(tuesday)) {
+            //            tuesday = parseInt(0);
+            //        }
 
-                    if (isNaN(wednesday)) {
-                        wednesday = parseInt(0);
-                    }
+            //        if (isNaN(wednesday)) {
+            //            wednesday = parseInt(0);
+            //        }
 
-                    if (isNaN(thursday)) {
-                        thursday = parseInt(0);
-                    }
+            //        if (isNaN(thursday)) {
+            //            thursday = parseInt(0);
+            //        }
 
-                    if (isNaN(friday)) {
-                        friday = parseInt(0);
-                    }
+            //        if (isNaN(friday)) {
+            //            friday = parseInt(0);
+            //        }
 
-                    if (isNaN(saturday)) {
-                        saturday = parseInt(0);
-                    }
+            //        if (isNaN(saturday)) {
+            //            saturday = parseInt(0);
+            //        }
 
-                    if (isNaN(sunday)) {
-                        sunday = parseInt(0);
-                    }
+            //        if (isNaN(sunday)) {
+            //            sunday = parseInt(0);
+            //        }
                     
-                    var totalcheck = monday + tuesday + wednesday + thursday + friday + saturday + sunday;
+            //        var totalcheck = monday + tuesday + wednesday + thursday + friday + saturday + sunday;
                     
-                    //console.log(totalcheck);
+            //        //console.log(totalcheck);
 
-                    if ( billable.val() == ''){
-                        billable.error('Billable hours required');
-                        editor.field('total').set(totalcheck);
+            //        if ( billable.val() == ''){
+            //            billable.error('Billable hours required');
+            //            editor.field('total').set(totalcheck);
                        
-                    } else if (billable.val() < totalcheck && description.val() == "") {
-                        billable.error('Billable less than total, description required');
-                        description.error('Billable less than total, description required');
-                        editor.field('total').set(totalcheck);
-                    } else if (billable.val() > totalcheck) {
-                        billable.error('Billable should be less than or equal to Total, ' + totalcheck);
-                        editor.field('total').set(totalcheck);
-                    }
+            //        } else if (billable.val() < totalcheck && description.val() == "") {
+            //            billable.error('Billable less than total, description required');
+            //            description.error('Billable less than total, description required');
+            //            editor.field('total').set(totalcheck);
+            //        } else if (billable.val() > totalcheck) {
+            //            billable.error('Billable should be less than or equal to Total, ' + totalcheck);
+            //            editor.field('total').set(totalcheck);
+            //        }
 
-                    if (this.inError()) {
-                        return false;
-                    }
+            //        if (this.inError()) {
+            //            return false;
+            //        }
 
-                }
+            //    }
 
                 
 
-            });
+            //});
 
             
 
