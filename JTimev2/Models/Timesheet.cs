@@ -63,6 +63,9 @@ namespace JTimev2.Models
         //public double Total { get; set; }
 
         public double Billable { get; set; }
+        public decimal? TotalCost { get; set; }
+        public decimal? TotalInvoices { get; set; }
+        public decimal? AdjContract { get; set; }
         public string Description { get; set; }
         public bool Approved { get; set; }
         public bool Posted { get; set; }

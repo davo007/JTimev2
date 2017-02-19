@@ -81,5 +81,22 @@ namespace JTimev2
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWorkTasksResult>("GetWorkTasks");
         }
+    
+        public virtual ObjectResult<GetActivityFinancialsResult> GetActivityFinancials(Nullable<int> jobNumber, string package, string activity)
+        {
+            var jobNumberParameter = jobNumber.HasValue ?
+                new ObjectParameter("JobNumber", jobNumber) :
+                new ObjectParameter("JobNumber", typeof(int));
+    
+            var packageParameter = package != null ?
+                new ObjectParameter("Package", package) :
+                new ObjectParameter("Package", typeof(string));
+    
+            var activityParameter = activity != null ?
+                new ObjectParameter("Activity", activity) :
+                new ObjectParameter("Activity", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActivityFinancialsResult>("GetActivityFinancials", jobNumberParameter, packageParameter, activityParameter);
+        }
     }
 }

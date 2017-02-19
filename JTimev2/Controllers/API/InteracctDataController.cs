@@ -35,6 +35,7 @@ namespace JTimev2.Controllers.API
 
         }
 
+        //[Route(Name = "GetPack")]
         public IHttpActionResult GetPackages(int JobNumber)
         {
             var Packages = _context.GetPackages(JobNumber);
@@ -59,15 +60,14 @@ namespace JTimev2.Controllers.API
                 Id = x.Activity__CGR_,
                 Name = x.Activity__CGR_,
                 Desc = x.Description__CGD_,
-                TotalCost = x.Total_Costs____ESP_,
-                TotalInvoices = x.Total_Invoices____SVL_,
-                AdjContract = x.Adj_Contract___ACC_
+                
                 
             }).ToList();
 
             return Ok(ActivitiesList);
         }
 
+        
         public IHttpActionResult GetVariations(int JobNumber, string Package, string Activity)
         {
             var Variations = _context.GetVariationNumbers(JobNumber, Package, Activity);

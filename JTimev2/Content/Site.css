@@ -25,7 +25,8 @@ textarea {
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1600px;
+        max-width: 1800px;
+        margin: auto;
     }
 
     .col-lg-1,
@@ -41,6 +42,22 @@ textarea {
     .col-lg-11 {
         float:left;
     }
+}
+
+td.highlightGood {
+    font-weight: normal;
+    color: green;
+}
+
+td.highlightNotSoGood {
+    font-weight: bold;
+    color: orange;
+
+}
+
+td.highlightBad {
+    font-weight: bolder;
+    color: red;
 }
 
 select {

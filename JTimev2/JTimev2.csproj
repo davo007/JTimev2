@@ -216,6 +216,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\InteracctActivityFinancialsController.cs" />
     <Compile Include="Controllers\API\InteracctDataController.cs" />
     <Compile Include="Controllers\API\InteracctNCRCodesController.cs" />
     <Compile Include="Controllers\API\InteracctWorkTasksController.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Controllers\TimesheetsController.cs" />
     <Compile Include="Controllers\WeekendingController.cs" />
     <Compile Include="DTO\InteracctActivitiesDto.cs" />
+    <Compile Include="DTO\InteracctActivityFinancialsDto.cs" />
     <Compile Include="DTO\InteracctJobNumberDto.cs" />
     <Compile Include="DTO\InteracctNCRCodesDto.cs" />
     <Compile Include="DTO\InteracctPackagesDto.cs" />
@@ -235,6 +237,12 @@
     <Compile Include="DTO\TimesheetDto.cs" />
     <Compile Include="DTO\WeekendingDto.cs" />
     <Compile Include="GetActivitiesResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetActivityFinancialsResult.cs">
+      <DependentUpon>InteracctDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetActivityFinancials_Result.cs">
       <DependentUpon>InteracctDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetJobNumbersResult.cs">
@@ -363,6 +371,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201702150707357_AddWorkTask.cs" />
     <Compile Include="Migrations\ApplicationDbContext\201702150707357_AddWorkTask.Designer.cs">
       <DependentUpon>201702150707357_AddWorkTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702190514163_AddFinancialToTimesheet.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702190514163_AddFinancialToTimesheet.Designer.cs">
+      <DependentUpon>201702190514163_AddFinancialToTimesheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -609,6 +621,7 @@
     <Content Include="Scripts\DataTablesEditor\editor.foundation.min.js" />
     <Content Include="Scripts\DataTablesEditor\editor.jqueryui.js" />
     <Content Include="Scripts\DataTablesEditor\editor.jqueryui.min.js" />
+    <Content Include="Scripts\DataTablesEditor\editor.mask.js" />
     <Content Include="Scripts\DataTablesEditor\editor.selectize.js" />
     <Content Include="Scripts\DataTablesEditor\editor.semanticui.js" />
     <Content Include="Scripts\DataTablesEditor\editor.semanticui.min.js" />
@@ -689,6 +702,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -822,6 +837,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201702150707357_AddWorkTask.resx">
       <DependentUpon>201702150707357_AddWorkTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702190514163_AddFinancialToTimesheet.resx">
+      <DependentUpon>201702190514163_AddFinancialToTimesheet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,9 @@
             <th>Sun</th>
             <th>Total</th>
             <th>Billable</th>
+            <th>Total Costs</th>
+            <th>Total Invoices</th>
+            <th>Adjusted Contract</th>
             <th>Description</th>
            
         </tr>
@@ -272,7 +275,18 @@
                 }, {
                     label: "Billable:",
                     name: "billable"
-                }, {
+                },{
+                    label: "Total Cost:",
+                    name: "totalCost"
+                    
+                },{
+                    label: "Total Invoices:",
+                    name: "totalInvoices"
+                },{
+                    label: "Adjusted Contract",
+                    name: "adjContract"
+                   
+                },{
                     label: "Description:",
                     name: "description",
                     type: 'textarea'
@@ -415,8 +429,32 @@
                         callback(newjson);
                     }
                 });
+
+                $.ajax({
+                    url: '/api/InteracctActivityFinancials/GetActivityFinancials?JobNumber=' + editor.val('jobNumber') + "&Package=" + editor.val('package') + "&Activity=" + val,
+                    dataType: 'json',
+                    success: function (json) {
+                        //console.log(json);
+                        if (json.length > 0) {
+                            var newjson1 = {
+
+                                "values": {
+                                    "totalCost": json[0].totalCost,
+                                    "totalInvoices": json[0].totalInvoices,
+                                    "adjContract": json[0].adjContract
+                                }
+                            }
+
+                            callback(newjson1);
+                        }
+                        //console.log(newjson);
+                        
+                    }
+                });
+
+                });
                 //console.log(val);
-            });
+           
 
             editor.dependent('ncr', function (val, data, callback) {
                 var ret = {
@@ -441,6 +479,29 @@
             });
 
             var oTable = $("#timesheet").DataTable({
+                "createdRow": function (row, data, index) {
+                    //console.log("Total Cost: " + data.totalCost);
+                    //console.log("Adj Contract: " + data.adjContract);
+                    //console.log(isNaN(parseFloat(data.totalCost) / parseFloat(data.adjContract)));
+                    //console.log((parseFloat(data.totalCost) / parseFloat(data.adjContract)));
+                    if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) < 0.5) {
+                        //console.log("less than 0.5");
+                        $('td', row).eq(15).addClass('highlightGood');
+                    } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) >= 0.5 && (parseFloat(data.totalCost) / parseFloat(data.adjContract)) < 0.9) {
+                        //console.log("greater than 0.5, less than 0.9");
+                        $('td', row).eq(15).addClass('highlightNotSoGood');
+                    } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) > 0.9) {
+                        //console.log("greater than 0.9");
+                        $('td', row).eq(15).addClass('highlightBad');
+                    } else if (isNaN(parseFloat(data.totalCost) / parseFloat(data.adjContract))) {
+                        //console.log("is NaN");
+                        $('td', row).eq(15).addClass('highlightBad');
+                    } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) == Infinity) {
+                        //console.log("is Infinity");
+                        $('td', row).eq(15).addClass('highlightBad');
+                    }
+                    
+                },
                 "footerCallback": function(row, data, start, end, display){
                     var api = this.api(), data;
 
@@ -560,6 +621,18 @@
                     {
                         data: "billable",
                         className: 'editable'
+                    },
+                    {
+                        data: "totalCost",
+                        render: $.fn.dataTable.render.number(',', '.', 2, '$')
+                    },
+                    {
+                        data: "totalInvoices",
+                        render: $.fn.dataTable.render.number(',', '.', 2, '$')
+                    },
+                    {
+                        data: "adjContract",
+                        render: $.fn.dataTable.render.number(',', '.', 2, '$')
                     },
                     {
                         data: "description",
@@ -708,6 +781,8 @@
                 
 
             });
+
+            
 
             
 

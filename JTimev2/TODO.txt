@@ -2,8 +2,6 @@
 	- customise PDF output
 
 Future enhancements:
-- invoiced amount
-- Billable value
 - duplicate record button
 - copy timesheet from one week to another
 - styling for dropdown List boxes

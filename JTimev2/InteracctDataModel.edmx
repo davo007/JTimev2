@@ -9,6 +9,11 @@
           <Parameter Name="JobNumber" Type="int" Mode="In" />
           <Parameter Name="Package" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetActivityFinancials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobNumber" Type="int" Mode="In" />
+          <Parameter Name="Package" Type="nvarchar" Mode="In" />
+          <Parameter Name="Activity" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="GetJobNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetNCRCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetPackages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -41,6 +46,11 @@
           </FunctionImport>
           <FunctionImport Name="GetNCRCodes" ReturnType="Collection(InteracctDataModel.GetNCRCodesResult)" />
           <FunctionImport Name="GetWorkTasks" ReturnType="Collection(InteracctDataModel.GetWorkTasksResult)" />
+          <FunctionImport Name="GetActivityFinancials" ReturnType="Collection(InteracctDataModel.GetActivityFinancialsResult)">
+            <Parameter Name="JobNumber" Mode="In" Type="Int32" />
+            <Parameter Name="Package" Mode="In" Type="String" />
+            <Parameter Name="Activity" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetJobNumbersResult">
           <Property Type="Int32" Name="Job_No__JOB_" Nullable="true" />
@@ -53,10 +63,7 @@
         <ComplexType Name="GetActivitiesResult">
           <Property Type="String" Name="Activity__CGR_" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Description__CGD_" Nullable="true" MaxLength="40" />
-          <Property Type="Decimal" Name="Total_Costs____ESP_" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="Total_Invoices____SVL_" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="Adj_Contract___ACC_" Nullable="true" Precision="15" Scale="2" />
-        </ComplexType>
+          </ComplexType>
         <ComplexType Name="GetVariationNumbersResult">
           <Property Type="Int32" Name="Variation_No__VRN_" Nullable="true" />
         </ComplexType>
@@ -75,6 +82,16 @@
         <ComplexType Name="GetNCRCodesResult">
           <Property Type="String" Name="Code__NCR_" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Non_Charge_Reason__NCD_" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="GetActivityFinancials_Result">
+          <Property Type="Decimal" Name="Total_Costs____ESP_" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Total_Invoices____SVL_" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Adj_Contract___ACC_" Nullable="true" Precision="15" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetActivityFinancialsResult">
+          <Property Type="Decimal" Name="Total_Costs____ESP_" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Total_Invoices____SVL_" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Adj_Contract___ACC_" Nullable="true" Precision="15" Scale="2" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -95,10 +112,7 @@
               <ComplexTypeMapping TypeName="InteracctDataModel.GetActivitiesResult">
                 <ScalarProperty Name="Activity__CGR_" ColumnName="Activity (CGR)" />
                 <ScalarProperty Name="Description__CGD_" ColumnName="Description (CGD)" />
-                <ScalarProperty Name="Total_Costs____ESP_" ColumnName="Total Costs $ (ESP)" />
-                <ScalarProperty Name="Total_Invoices____SVL_" ColumnName="Total Invoices $ (SVL)" />
-                <ScalarProperty Name="Adj_Contract___ACC_" ColumnName="Adj Contract$ (ACC)" />
-              </ComplexTypeMapping>
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPackages" FunctionName="InteracctDataModel.Store.GetPackages" >
@@ -129,6 +143,15 @@
               <ComplexTypeMapping TypeName="InteracctDataModel.GetWorkTasksResult">
                 <ScalarProperty Name="Work_Task__CIT_" ColumnName="Work Task (CIT)" />
                 <ScalarProperty Name="Description__CID_" ColumnName="Description (CID)" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetActivityFinancials" FunctionName="InteracctDataModel.Store.GetActivityFinancials">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="InteracctDataModel.GetActivityFinancialsResult">
+                <ScalarProperty Name="Total_Costs____ESP_" ColumnName="Total Costs $ (ESP)" />
+                <ScalarProperty Name="Total_Invoices____SVL_" ColumnName="Total Invoices $ (SVL)" />
+                <ScalarProperty Name="Adj_Contract___ACC_" ColumnName="Adj Contract$ (ACC)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

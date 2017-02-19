@@ -23,6 +23,8 @@ namespace JTimev2
                       "~/scripts/datatables/buttons.html5.min.js",
                       "~/scripts/datatables/buttons.print.js",
                       "~/scripts/datatableseditor/datatables.editor.js",
+                      "~/scripts/jquery.mask.js",
+                      "~/scripts/datatableseditor/editor.mask.js",
                       "~/scripts/datatableseditor/editor.selectize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
