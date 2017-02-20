@@ -1,8 +1,11 @@
 ﻿- Write to PDF/Excel
 	- customise PDF output
+	- remove zeros for printing
+- check NCR and Financial population
+- render zeros and ''
+
 
 Future enhancements:
-- duplicate record button
 - copy timesheet from one week to another
 - styling for dropdown List boxes
 - user/employee login
