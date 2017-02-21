@@ -460,16 +460,20 @@
                 var ret = {
                     "values": {
                         "jobNumber": GetJobNumbers(),
-                        "workTask": "0.NA"
+                        "workTask": "0.NA",
+                        "totalCost": '',
+                        "totalInvoices": '',
+                        "adjContract": '',
+                        "billable": 0
                     },
-                    "hide": ['jobNumber', 'package', 'activity', 'variation', 'workTask']
+                    "hide": ['jobNumber', 'package', 'activity', 'variation', 'workTask', 'totalCost', 'totalInvoices', 'adjContract', 'billable']
                 };
 
                 var ret2 = {
                     "values": {
                         "jobNumber": GetJobNumbers()
                     },
-                    "show": ['jobNumber', 'package', 'activity', 'variation', 'workTask']
+                    "show": ['jobNumber', 'package', 'activity', 'variation', 'workTask', 'totalCost', 'totalInvoices', 'adjContract', 'billable']
                 };
                 //console.log(data);
 
@@ -586,38 +590,54 @@
                     },
                     {
                         data: "mondayTime",
-                        className: 'editable'
-                       
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                        }
                     },
                     {
                         data: "tuesdayTime",
-                        className: 'editable'
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                            
+                        }
                         
                     },
                     {
                         data: "wednesdayTime",
-                        className: 'editable'
-                        
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                        }
                     },
                     {
                         data: "thursdayTime",
-                        className: 'editable'
-                        
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                        }
                     },
                     {
                         data: "fridayTime",
-                        className: 'editable'
-                        
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                        }
                     },
                     {
                         data: "saturdayTime",
-                        className: 'editable'
-                        
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                        }
                     },
                     {
                         data: "sundayTime",
-                        className: 'editable'
-                        
+                        className: 'editable',
+                        render: function (data, type, row) {
+                            return data == 0 ? "" : data;
+                        }
                     },
                     {
                         data: "total"                      
