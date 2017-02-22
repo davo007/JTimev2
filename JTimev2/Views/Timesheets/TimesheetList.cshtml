@@ -483,7 +483,7 @@
             });
 
             var oTable = $("#timesheet").DataTable({
-                "createdRow": function (row, data, index) {
+                "rowCallback": function (row, data, index) {
                     //console.log("Total Cost: " + data.totalCost);
                     //console.log("Adj Contract: " + data.adjContract);
                     //console.log(isNaN(parseFloat(data.totalCost) / parseFloat(data.adjContract)));
@@ -491,26 +491,65 @@
                     if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) < 0.5) {
                         //console.log("less than 0.5");
                         $('td', row).eq(15).addClass('highlightGood');
+                        $('td', row).eq(15).removeClass('highlightNotSoGood');
+                        $('td', row).eq(15).removeClass('highlightBad');
                     } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) >= 0.5 && (parseFloat(data.totalCost) / parseFloat(data.adjContract)) < 0.9) {
                         //console.log("greater than 0.5, less than 0.9");
                         $('td', row).eq(15).addClass('highlightNotSoGood');
+                        $('td', row).eq(15).removeClass('highlightGood');
+                        $('td', row).eq(15).removeClass('highlightBad');
                     } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) > 0.9) {
                         //console.log("greater than 0.9");
                         $('td', row).eq(15).addClass('highlightBad');
+                        $('td', row).eq(15).removeClass('highlightGood');
+                        $('td', row).eq(15).removeClass('highlightNotSoGood');
                     } else if (isNaN(parseFloat(data.totalCost) / parseFloat(data.adjContract))) {
                         //console.log("is NaN");
                         $('td', row).eq(15).addClass('highlightBad');
+                        $('td', row).eq(15).removeClass('highlightGood');
+                        $('td', row).eq(15).removeClass('highlightNotSoGood');
                     } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) == Infinity) {
                         //console.log("is Infinity");
                         $('td', row).eq(15).addClass('highlightBad');
+                        $('td', row).eq(15).removeClass('highlightGood');
+                        $('td', row).eq(15).removeClass('highlightNotSoGood');
                     }
 
                     if (parseFloat(data.billable) < parseFloat(data.total)) {
                         $('td', row).eq(14).addClass('highlightBad');
+                        $('td', row).eq(14).removeClass('highlightGood');
 
+                    } else if (parseFloat(data.billable) == parseFloat(data.total)) {
+                        $('td', row).eq(14).addClass('highlightGood');
+                        $('td', row).eq(14).removeClass('highlightBad');
                     }
+
+                    //console.log("rowCallback");
                     
                 },
+                //"drawCallback": function( settings ) {
+                //    if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) < 0.5) {
+                //        //console.log("less than 0.5");
+                //        $('td', row).eq(15).addClass('highlightGood');
+                //    } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) >= 0.5 && (parseFloat(data.totalCost) / parseFloat(data.adjContract)) < 0.9) {
+                //        //console.log("greater than 0.5, less than 0.9");
+                //        $('td', row).eq(15).addClass('highlightNotSoGood');
+                //    } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) > 0.9) {
+                //        //console.log("greater than 0.9");
+                //        $('td', row).eq(15).addClass('highlightBad');
+                //    } else if (isNaN(parseFloat(data.totalCost) / parseFloat(data.adjContract))) {
+                //        //console.log("is NaN");
+                //        $('td', row).eq(15).addClass('highlightBad');
+                //    } else if ((parseFloat(data.totalCost) / parseFloat(data.adjContract)) == Infinity) {
+                //        //console.log("is Infinity");
+                //        $('td', row).eq(15).addClass('highlightBad');
+                //    }
+
+                //    if (parseFloat(data.billable) < parseFloat(data.total)) {
+                //        $('td', row).eq(14).addClass('highlightBad');
+
+                //    }
+                //},
                 "footerCallback": function(row, data, start, end, display){
                     var api = this.api(), data;
 

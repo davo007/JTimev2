@@ -44,21 +44,25 @@ textarea {
     }
 }
 
-td.highlightGood {
-    font-weight: normal;
-    color: green;
+td.highlightBad {
+    font-weight: bolder;
+    color: red !important;
 }
 
 td.highlightNotSoGood {
     font-weight: bold;
-    color: orange;
+    color: orange !important;
 
 }
 
-td.highlightBad {
-    font-weight: bolder;
-    color: red;
+td.highlightGood {
+    font-weight: normal;
+    color: green !important;
 }
+
+
+
+
 
 select {
     border-radius: 5px;
