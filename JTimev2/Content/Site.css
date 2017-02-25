@@ -60,7 +60,9 @@ td.highlightGood {
     color: green !important;
 }
 
-
+.footer {
+    height: 100px;
+}
 
 
 

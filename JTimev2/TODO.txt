@@ -1,7 +1,6 @@
 ﻿- Write to PDF/Excel
 	- customise PDF output
-	- remove zeros for printing
-
+	
 Future enhancements:
 - copy timesheet from one week to another
 - styling for dropdown List boxes
