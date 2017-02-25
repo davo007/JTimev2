@@ -764,15 +764,18 @@
                         orientation: 'landscape',
                         pageSize: 'A4',
                         footer: true,
-                        title: 'Employee Timesheet',
+                        //download: 'open',
+                        //title: 'Employee Timesheet \n Employee Name \n Weekending: ' + $("#weekending").find(':selected').text(),
+                        filename: '*',
                         exportOptions: {
                             columns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,18]
                         },
                         customize: function (doc) {
-                            console.log(doc);
+                            //console.log(doc);
+                            //console.log($("#weekending").find(':selected').text());
                             var left = 50;
                             doc.defaultStyle.fontSize = 9;
-
+                            //title = 'Employee Timesheet \n Employee Name \n Weekending: ' + $("#weekending").find(':selected').text(),
                             //doc.styles.tableHeader.fontSize = 10;
                             //doc.styles.tableFooter.fontSize = 10;
                             doc.pageMargins = [left, 10, 10, 200];
@@ -803,21 +806,22 @@
                             doc['footer'] = {
                                 margin: [left, 0, 0, 0],
                                 table: {
-                                    
+                                    widths: ['auto', 25, 'auto', 25, 'auto', 75, 'auto'],
+                                    //height: (i) => ((i + 10) * 9),
                                     body: [
 
                                         //['col 1', 'col 2','col 3','col 4'],
-                                        [{ text: 'Office Use Only:', style: 'tableHeader', colSpan: 4 }, '', '', '', '', { text: 'SIGNED:', style: 'tableHeader', colSpan: 2 }, ''],
-		        ['O/T @@ 1', '..................', 'Annual Leave', '..................', '', { text: 'EMPLOYEE:', rowSpan: 2, verticalAlign: 'center' }, { text: '............................', rowSpan: 2 }],
-		        ['O/T @@ 1.5', '..................', 'Carers Leave', '..................', ''],
-		        ['O/T @@ 2', '..................', 'Community Service Leave', '..................', '', { text: 'MANAGER:', rowSpan: 2, verticalAlign: 'center' }, { text: '............................', rowSpan: 2 }],
-		        ['Recession Time Off', '..................', 'Compassionate Leave', '..................', '', '', ''],
-		        ['TIL Accrued', '..................', 'Long Service Leave', '..................', '', { text: 'DIRECTOR:', rowSpan: 2, verticalAlign: 'center' }, { text: '............................', rowSpan: 2 }],
-		        ['RDO Taken', '..................', 'LWOP', '..................', '', '', ''],
-		        ['', '', 'Parental leave', '..................', '', { text: 'PAYROLL ADMIN:', rowSpan: 2, verticalAlign: 'center' }, { text: '............................', rowSpan: 2 }],
-		        ['', '', 'Public Holiday', '..................', '', '', ''],
-		        ['', '', 'Sick Leave (employee)', '..................', '', '', ''],
-		        ['', '', 'Study leave', '..................', '', '', ''],
+                                        [{ text: 'OFFICE USE ONLY:', style: 'tableHeader', colSpan: 4 }, '', '', '', { text: 'ADMIN ENTRY STAMP:', style: 'tableHeader' }, { text: 'SIGNED:', style: 'tableHeader', colSpan: 2 }, ''],
+		        ['O/T @@ 1', '', 'Annual Leave', '', { text: '', rowSpan: 10 }, { text: 'EMPLOYEE:', colSpan: 2, rowSpan: 2, border: [true, false, true, false] }, ''],
+		        ['O/T @@ 1.5', '', 'Carers Leave', '', '', { border: [true, false, true, false], text: '', colSpan: 2 }, ''],
+		        ['O/T @@ 2', '', 'Community Service Leave', '', '', { text: 'MANAGER:', colSpan: 2, rowSpan: 2, border: [true, true, true, false] }, ''],
+		        ['Recession Time Off', '', 'Compassionate Leave', '', '', { text: '', colSpan: 2, border: [true, false, true, false] }, ''],
+		        ['TIL Accrued', '', 'Long Service Leave', '', '', { text: 'DIRECTOR:', colSpan: 2, rowSpan: 2, border: [true, true, true, false] }, ''],
+		        ['RDO Taken', '', 'LWOP', '', '', { text: '', colSpan: 2, border: [true, false, true, false] }, ''],
+		        ['', '', 'Parental leave', '', '', { text: 'PAYROLL ADMIN:', colSpan: 2, rowSpan: 2, border: [true, true, true, false] }, ],
+		        ['', '', 'Public Holiday', '', '', { text: '', colSpan: 2, border: [true, false, true, false] }, ''],
+		        ['', '', 'Sick Leave (employee)', '', '', { text: '', rowSpan: 2, colSpan: 2 }, ''],
+		        ['', '', 'Study leave', '', '', '', ''],
                                     ]
                                 },
                                 layout: {
@@ -861,7 +865,9 @@
             $("#weekending").on('change', function () {
                 //console.log($("#weekending").val());
                 //oTable.ajax.reload();
+                //console.log($("#weekending").find(':selected').text());
                 oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
+                document.title = 'Employee Timesheet \n Employee Name \n Weekending: ' + $("#weekending").find(':selected').text();
             });
            
             //editor.on('initEdit', function (e, node, data) {
