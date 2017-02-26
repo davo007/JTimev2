@@ -376,6 +376,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201702190514163_AddFinancialToTimesheet.Designer.cs">
       <DependentUpon>201702190514163_AddFinancialToTimesheet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201702260553596_addNewFieldsToIdentity.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201702260553596_addNewFieldsToIdentity.Designer.cs">
+      <DependentUpon>201702260553596_addNewFieldsToIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -843,6 +847,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201702190514163_AddFinancialToTimesheet.resx">
       <DependentUpon>201702190514163_AddFinancialToTimesheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201702260553596_addNewFieldsToIdentity.resx">
+      <DependentUpon>201702260553596_addNewFieldsToIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
