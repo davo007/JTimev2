@@ -1,5 +1,6 @@
 ﻿- Write to PDF/Excel
 	- customise PDF output
+	- JWP image
 - Fix date in dropdown list to be date only
 	
 Future enhancements:
