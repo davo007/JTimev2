@@ -39,8 +39,15 @@
     </thead>
     <tfoot>
         <tr>
-            <th colspan="12"></th>
+            <th colspan="5"></th>
             <th style="text-align:right">Total:</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             
@@ -565,7 +572,86 @@
                             i : 0;
                     };
 
+                    //console.log(api);
+
                     // Total over all pages
+                    MondayTime = api
+                        .column(6)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(6).footer()).html(
+                        MondayTime
+                        );
+
+                    TuesdayTime = api
+                        .column(7)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(7).footer()).html(
+                        TuesdayTime
+                        );
+
+                    WednesdayTime = api
+                        .column(8)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(8).footer()).html(
+                        WednesdayTime
+                        );
+
+                    ThursdayTime = api
+                        .column(9)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(9).footer()).html(
+                        ThursdayTime
+                        );
+
+                    FridayTime = api
+                        .column(10)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(10).footer()).html(
+                        FridayTime
+                        );
+
+                    SaturdayTime = api
+                        .column(11)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(11).footer()).html(
+                        SaturdayTime
+                        );
+
+                    SundayTime = api
+                        .column(12)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    $(api.column(12).footer()).html(
+                        SundayTime
+                        );
+
                     totalTime = api
                         .column(13)
                         .data()
