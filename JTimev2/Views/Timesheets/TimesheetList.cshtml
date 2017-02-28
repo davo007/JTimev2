@@ -1,8 +1,24 @@
-﻿@model IEnumerable<JTimev2.Models.Timesheet>
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+
+
+@model IEnumerable<JTimev2.Models.Timesheet>
 @{
     ViewBag.Title = "Timesheet Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    
 }
+
+@if (Request.IsAuthenticated)
+{
+
+    @Html.AntiForgeryToken()
+
+    var currentUserId = User.Identity.GetUserId();
+    var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    //var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    var currentUser = manager.FindById(currentUserId);
 
 <h2>Timesheet Form</h2>
 <label for="weekending">Weekending Date:</label>
@@ -973,7 +989,7 @@
                 //oTable.ajax.reload();
                 //console.log($("#weekending").find(':selected').text());
                 oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
-                document.title = 'Employee Name \n Weekending: ' + $("#weekending").find(':selected').text();
+                document.title = "@currentUser.FirstName" + " " + "@currentUser.LastName" + '\n Weekending: ' + $("#weekending").find(':selected').text();
             });
            
             //editor.on('initEdit', function (e, node, data) {
@@ -1084,3 +1100,4 @@
     </script>
     
     }
+}

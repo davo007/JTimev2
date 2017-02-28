@@ -162,10 +162,10 @@ namespace JTimev2.Controllers
                 if (result.Succeeded)
                 {
                     //Temp code to add user to role
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("IsAdmin"));
-                    await UserManager.AddToRoleAsync(user.Id, "IsAdmin");
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("IsAdmin"));
+                    //await UserManager.AddToRoleAsync(user.Id, "IsAdmin");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

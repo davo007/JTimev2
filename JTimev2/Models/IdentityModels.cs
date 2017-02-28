@@ -21,9 +21,22 @@ namespace JTimev2.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             userIdentity.AddClaim(new Claim("FullName", FirstName + " " + LastName));
+            userIdentity.AddClaim(new Claim("FirstName", FirstName));
+           
             return userIdentity;
         }
+
+        //public static string GetFullName(System.Security.Principal.IPrincipal usr)
+        //{
+        //    var fullnameClaim = ((ClaimsIdentity)usr.Identity).FindFirst("FullName");
+        //    if (fullnameClaim != null)
+        //        return fullnameClaim.Value;
+
+        //    return "";
+        //}
     }
+
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

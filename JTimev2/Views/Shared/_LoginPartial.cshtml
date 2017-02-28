@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
 @using System.Security.Claims
 @if (Request.IsAuthenticated)
 {
@@ -6,11 +7,16 @@
     {
     @Html.AntiForgeryToken()
 
+        var currentUserId = User.Identity.GetUserId();
+        var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        //var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        var currentUser = manager.FindById(currentUserId);
 
     <ul class="nav navbar-nav navbar-right">
         <li>
            @* @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-            @Html.ActionLink("Hello " + ((ClaimsIdentity)User.Identity).FindFirst("FullName") + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Hello " + currentUser.FirstName + " " + currentUser.LastName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
