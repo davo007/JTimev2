@@ -2,10 +2,11 @@
 	- customise PDF output
 - Fix date in dropdown list to be date only
 - user/employee login
+- add server side validation
 	
 Future enhancements:
 - copy timesheet from one week to another
 - styling for dropdown List boxes
-
+- refactor code
 - admin section
 	- edit users
