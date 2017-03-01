@@ -8,7 +8,7 @@ namespace JTimev2.DTO
     public class TimesheetDto
     {
         public int Id { get; set; }
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
         public WeekendingDto Weekending { get; set; }
         public byte WeekendingId { get; set; }

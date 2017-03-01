@@ -10,7 +10,7 @@ namespace JTimev2.Models
     public class Timesheet
     {
         public int Id { get; set; }
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
         
         public Weekending Weekending { get; set; }
 

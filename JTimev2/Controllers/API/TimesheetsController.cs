@@ -11,6 +11,7 @@ using JTimev2.DTO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNet.Identity;
 //using DataTables;
 
 
@@ -96,6 +97,8 @@ namespace JTimev2.Controllers.API
             {
                 timesheet.SundayTime = 0;
             }
+
+            timesheet.EmployeeId = User.Identity.GetUserId();
 
             _context.Timesheets.Add(timesheet);
             _context.SaveChanges();

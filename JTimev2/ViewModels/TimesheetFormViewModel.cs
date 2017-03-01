@@ -11,7 +11,7 @@ namespace JTimev2.ViewModels
         public IEnumerable<Weekending> Weekendings { get; set; }
         public byte? WeekendingId { get; set; }
         public int? Id { get; set; }
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
                 
         public int JobNumber { get; set; }
         public string Package { get; set; }
