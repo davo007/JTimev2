@@ -8,6 +8,7 @@ using JTimev2.Models;
 using AutoMapper;
 using JTimev2.DTO;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
 
 namespace JTimev2.Controllers.API
 {
@@ -25,8 +26,12 @@ namespace JTimev2.Controllers.API
         public IHttpActionResult GetTimesheets(int id)
         //public IEnumerable<TimesheetDto> GetTimesheets()
         {
+
+            var loggedInId = User.Identity.GetUserId();
+
             var timesheetQuery = _context.Timesheets
-                .Include(c => c.Weekending);
+                .Include(c => c.Weekending)
+                .Where(c => c.EmployeeId == loggedInId);
 
             if (id > 0)
                 timesheetQuery = timesheetQuery.Where(m => m.WeekendingId == id);
