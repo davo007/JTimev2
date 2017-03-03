@@ -1,11 +1,13 @@
 ﻿- Write to PDF/Excel
 	- customise PDF output
-- user/employee login tidy up other login options
-- add server side validation
+- validation on preparing PDF
+- default weekending to closest to current date(?)
 	
 Future enhancements:
+- styling
 - copy timesheet from one week to another
 - styling for dropdown List boxes
 - refactor code
 - admin section
 	- edit users
+- add server side validation (maybe)

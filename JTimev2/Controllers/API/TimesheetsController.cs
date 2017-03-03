@@ -98,6 +98,7 @@ namespace JTimev2.Controllers.API
                 timesheet.SundayTime = 0;
             }
 
+
             timesheet.EmployeeId = User.Identity.GetUserId();
 
             _context.Timesheets.Add(timesheet);
@@ -159,6 +160,8 @@ namespace JTimev2.Controllers.API
             {
                 timesheetDto.SundayTime = 0;
             }
+
+            timesheetDto.EmployeeId = User.Identity.GetUserId();
 
             var timesheetInDb = _context.Timesheets.SingleOrDefault(c => c.Id == id);
 
