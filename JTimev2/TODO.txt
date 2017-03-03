@@ -1,7 +1,6 @@
 ﻿- Write to PDF/Excel
 	- customise PDF output
-- Fix date in dropdown list to be date only
-- user/employee login
+- user/employee login tidy up other login options
 - add server side validation
 	
 Future enhancements:

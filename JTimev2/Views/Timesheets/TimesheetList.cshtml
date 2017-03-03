@@ -182,9 +182,10 @@
                     $el.append($("<option></option>")
                         .attr("value", '').text('Select Weekending'));
                     $.each(json, function (value, key) {
-                        //console.log(key.id);
+                        var val = new Date(key.dateOfSun);
+                        //console.log(val.toLocaleDateString('en-AU'));
                         $el.append($("<option></option>")
-                            .attr("value", key.id).text(key.dateOfSun));
+                            .attr("value", key.id).text(val.toLocaleDateString('en-AU')));
                     });
                 }
             });
