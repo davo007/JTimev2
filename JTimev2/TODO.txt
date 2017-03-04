@@ -1,7 +1,6 @@
 ﻿- Write to PDF/Excel
 	- customise PDF output
-- validation on preparing PDF
-- default weekending to closest to current date(?)
+
 	
 Future enhancements:
 - styling
@@ -11,3 +10,4 @@ Future enhancements:
 - admin section
 	- edit users
 - add server side validation (maybe)
+	- validation on preparing PDF

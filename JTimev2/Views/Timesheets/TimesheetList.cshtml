@@ -173,6 +173,13 @@
 
             }
 
+            var dateNow = new Date(Date.now());
+            var dayOfWeek = dateNow.getDay();
+            var closestDate = new Date();
+            closestDate.setDate(closestDate.getDate() + parseInt(7) - parseInt(dayOfWeek));
+            //console.log(closestDate.toLocaleDateString('en-AU'));
+            //console.log(dayOfWeek);
+
             $.ajax({
                 type: "GET",
                 url: "/api/weekendings",
@@ -188,6 +195,17 @@
                         $el.append($("<option></option>")
                             .attr("value", key.id).text(val.toLocaleDateString('en-AU')));
                     });
+
+                    var dd = document.getElementById('weekending');
+                    for (var i = 0; i < dd.options.length; i++) {
+                        //console.log(dd.options[i].text);
+                        if (dd.options[i].text === closestDate.toLocaleDateString('en-AU')) {
+                            dd.selectedIndex = i;
+                            oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
+                            document.title = "@currentUser.FirstName" + " " + "@currentUser.LastName" + '\n Weekending: ' + $("#weekending").find(':selected').text();
+                            break;
+                        }
+                    }
                 }
             });
 
@@ -869,6 +887,13 @@
                         orientation: 'landscape',
                         pageSize: 'A4',
                         footer: true,
+                        action: function(e, dt, button, config){
+                            //return false;
+                            //console.log(e);
+                            //console.log(dt);
+                            //console.log( dt.context[0].json);
+                            $.fn.dataTable.ext.buttons.pdfHtml5.action(e, dt, button, config);
+                        },
                         //download: 'open',
                         //title: 'Employee Timesheet \n Employee Name \n Weekending: ' + $("#weekending").find(':selected').text(),
                         filename: '*',
@@ -1019,6 +1044,14 @@
                     editor.field('ncr').set("0.NA");
                 }
             });
+
+            $("#timesheet").on("keydown", "textarea", function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    editor.submit();
+                }
+            });
+
 
             //editor.on('submitSuccess', function (e, json, data) {
             //    console.log(data);
