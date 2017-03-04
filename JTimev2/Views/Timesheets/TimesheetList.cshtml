@@ -177,6 +177,12 @@
             var dayOfWeek = dateNow.getDay();
             var closestDate = new Date();
             closestDate.setDate(closestDate.getDate() + parseInt(7) - parseInt(dayOfWeek));
+
+            var month = (1 + closestDate.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = closestDate.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            var clostestdateString = closestDate.getFullYear() + "/" + month + "/" + day;
             //console.log(closestDate.toLocaleDateString('en-AU'));
             //console.log(dayOfWeek);
 
@@ -192,14 +198,20 @@
                     $.each(json, function (value, key) {
                         var val = new Date(key.dateOfSun);
                         //console.log(val.toLocaleDateString('en-AU'));
+                        var month = (1 + val.getMonth()).toString();
+                        month = month.length > 1 ? month : '0' + month;
+                        var day = val.getDate().toString();
+                        day = day.length > 1 ? day : '0' + day;
+                        var date = val.getFullYear() + "/" + month + "/" + day;
                         $el.append($("<option></option>")
-                            .attr("value", key.id).text(val.toLocaleDateString('en-AU')));
+                            //.attr("value", key.id).text(val.toLocaleDateString('en-AU')));
+                        .attr("value", key.id).text(date));
                     });
 
                     var dd = document.getElementById('weekending');
                     for (var i = 0; i < dd.options.length; i++) {
                         //console.log(dd.options[i].text);
-                        if (dd.options[i].text === closestDate.toLocaleDateString('en-AU')) {
+                        if (dd.options[i].text === clostestdateString) {
                             dd.selectedIndex = i;
                             oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
                             document.title = "@currentUser.FirstName" + " " + "@currentUser.LastName" + '\n Weekending: ' + $("#weekending").find(':selected').text();
