@@ -895,6 +895,24 @@
                     },
                     //'copyHtml5',
                     {
+                        
+                        text: 'Copy Previous',
+                        action: function () {
+                            //TODO: Add controller api call
+                            $.ajax({
+                                type: 'PUT',
+                                url: 'api/timesheetsbydate/' + $('#weekending').val(),
+                                success: function () {
+                                    oTable.ajax.url("/api/timesheetsbydate/" + $("#weekending").val()).load();
+                                    bootbox.alert("Copied previous weeks data");
+                                }
+
+                            });
+                            
+                            //console.log("button pressed");
+                        }
+                    },
+                    {
                         extend: 'pdfHtml5',
                         orientation: 'landscape',
                         pageSize: 'A4',

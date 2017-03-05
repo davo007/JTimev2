@@ -15,6 +15,7 @@ namespace JTimev2.App_Start
 
             Mapper.CreateMap<Timesheet, TimesheetDto>();
             Mapper.CreateMap<Weekending, WeekendingDto>();
+            Mapper.CreateMap<Timesheet, Timesheet>().ForMember(m => m.Id, opt => opt.Ignore());
             Mapper.CreateMap<TimesheetDto, Timesheet>().ForMember(m => m.Id, opt => opt.Ignore());
             Mapper.CreateMap<WeekendingDto, Weekending>().ForMember(c => c.Id, opt => opt.Ignore());
         }

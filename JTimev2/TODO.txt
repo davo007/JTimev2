@@ -4,10 +4,10 @@
 	
 Future enhancements:
 - styling
-- copy timesheet from one week to another
-- styling for dropdown List boxes
+	- styling for dropdown List boxes
 - refactor code
 - admin section
 	- edit users
-- add server side validation (maybe)
-	- validation on preparing PDF
+- approval process
+	- add server side validation (maybe)
+- validation on preparing PDF

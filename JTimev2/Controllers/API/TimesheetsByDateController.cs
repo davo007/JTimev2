@@ -42,5 +42,32 @@ namespace JTimev2.Controllers.API
 
             return Ok(timesheetDtos);
         }
+
+        [HttpPut]
+        public IHttpActionResult CopyTimesheets(int id)
+        {
+            var loggedInId = User.Identity.GetUserId();
+
+            var timesheetQuery = _context.Timesheets
+                .Include(c => c.Weekending)
+                .Where(c => c.WeekendingId == (id - 1))
+                .ToList();
+                //.Where(c => c.EmployeeId == loggedInId);
+
+            foreach (Timesheet timesheet in timesheetQuery)
+            {
+                Timesheet ts = new Timesheet();
+                
+                Mapper.Map(timesheet, ts);
+
+                ts.Weekending = _context.Weekendings.SingleOrDefault(c => c.Id == id);
+                ts.WeekendingId = (byte)id;
+
+                _context.Timesheets.Add(ts);
+                _context.SaveChanges();
+            }
+
+            return Ok();
+        }
     }
 }
