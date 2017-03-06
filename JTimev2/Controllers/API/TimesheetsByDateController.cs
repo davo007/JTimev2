@@ -51,8 +51,9 @@ namespace JTimev2.Controllers.API
             var timesheetQuery = _context.Timesheets
                 .Include(c => c.Weekending)
                 .Where(c => c.WeekendingId == (id - 1))
+                .Where(c => c.EmployeeId == loggedInId)
                 .ToList();
-                //.Where(c => c.EmployeeId == loggedInId);
+                //;
 
             foreach (Timesheet timesheet in timesheetQuery)
             {
