@@ -23,6 +23,8 @@ namespace JTimev2.Controllers
        
         public ViewResult Index()
         {
+
+
             var model = _context.Timesheets.Include(c => c.Weekending).ToList();             
             
             
