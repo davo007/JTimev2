@@ -384,6 +384,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201702282253295_ChangeEmployeeIdToString.Designer.cs">
       <DependentUpon>201702282253295_ChangeEmployeeIdToString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201703070151249_addUsers.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201703070151249_addUsers.Designer.cs">
+      <DependentUpon>201703070151249_addUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -619,6 +623,7 @@
     <Content Include="Content\selectize\less\plugins\optgroup_columns.less" />
     <Content Include="Content\selectize\less\plugins\dropdown_header.less" />
     <Content Include="Content\selectize\less\plugins\drag_drop.less" />
+    <None Include="Properties\PublishProfiles\Final.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTablesEditor\dataTables.editor.js" />
     <Content Include="Scripts\DataTablesEditor\dataTables.editor.min.js" />
@@ -857,6 +862,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201702282253295_ChangeEmployeeIdToString.resx">
       <DependentUpon>201702282253295_ChangeEmployeeIdToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201703070151249_addUsers.resx">
+      <DependentUpon>201703070151249_addUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
