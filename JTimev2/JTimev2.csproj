@@ -225,7 +225,9 @@
     <Compile Include="Controllers\API\WeekendingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\TimesheetsController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\WeekendingController.cs" />
     <Compile Include="DTO\InteracctActivitiesDto.cs" />
     <Compile Include="DTO\InteracctActivityFinancialsDto.cs" />
@@ -765,6 +767,7 @@
     <Content Include="Views\Timesheets\Create.cshtml" />
     <Content Include="Views\Timesheets\TimesheetList.cshtml" />
     <Content Include="Scripts\pdfmake\pdfmake.min.js.map" />
+    <Content Include="Views\UserAdmin\Index.cshtml" />
     <None Include="Web.DebugHome.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -772,6 +775,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\InteracctData\" />
+    <Folder Include="Views\RolesAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
